@@ -92,7 +92,7 @@ export function Footer() {
             <h3 className="text-sm font-semibold tracking-widest uppercase text-white">Siège Social</h3>
             <div className="mt-4 space-y-2 text-sm text-zinc-400">
               <p>Tower 535, 535 Jaffe Road,<br/>Causeway Bay, Hong Kong</p>
-              <p><a href="mailto:contact@prosper-project.com" className="hover:text-white transition-colors">contact@prosper-project.com</a></p>
+              <p><a href="mailto:leaouer@gmail.com" className="hover:text-white transition-colors">leaouer@gmail.com</a></p>
               <p>WhatsApp Support 24/7</p>
             </div>
           </div>

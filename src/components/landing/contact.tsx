@@ -48,7 +48,7 @@ export function Contact() {
     const subject = encodeURIComponent(`Prise de contact de ${values.name}`);
     const body = encodeURIComponent(`Nom: ${values.name}\nEmail: ${values.email}\n\nMessage:\n${values.message}`);
     
-    window.location.href = `mailto:contact@example.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:leaouer@gmail.com?subject=${subject}&body=${body}`;
 
     toast({
       title: "Ouverture de votre client de messagerie",
@@ -61,7 +61,7 @@ export function Contact() {
     <section 
       ref={ref}
       id="contact" 
-      className={cn("w-full py-24 transition-all duration-600 ease-out bg-[#111111]", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
+      className={cn("w-full py-12 transition-all duration-600 ease-out bg-[#111111]", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
