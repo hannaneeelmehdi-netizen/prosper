@@ -10,6 +10,7 @@ import { CTA } from "@/components/landing/cta";
 import { Contact } from "@/components/landing/contact";
 import { FAQ } from "@/components/landing/faq";
 import { Footer } from "@/components/landing/footer";
+import { Pricing } from "@/components/landing/pricing";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         <Roadmap />
         <Services />
         <Comparison />
+        <Pricing />
         <Testimonials />
         <Expertise />
         <FAQ />

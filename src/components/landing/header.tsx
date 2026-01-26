@@ -21,6 +21,7 @@ export function Header() {
   const navLinks = [
     { href: "#features", label: "Avantages" },
     { href: "#roadmap", label: "Processus" },
+    { href: "#pricing", label: "Tarifs" },
     { href: "#comparison", label: "Comparatif" },
   ];
 
