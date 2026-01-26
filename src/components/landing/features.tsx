@@ -36,6 +36,34 @@ const FeatureCard = ({
   </div>
 );
 
+const featuresData = [
+  {
+    icon: <Shield className="h-6 w-6 text-primary" />,
+    category: "Sérénité Fiscale",
+    title: "0% Fiscalité",
+    description: "Profitez d'une exonération totale d'impôts sur les bénéfices, les dividendes et les plus-values réalisés hors de Hong Kong. Une structure fiscale simple et avantageuse pour maximiser votre rentabilité.",
+  },
+  {
+    icon: <CreditCard className="h-6 w-6 text-primary" />,
+    category: "Accès Global",
+    title: "Banking International",
+    description: "Ouvrez des comptes bancaires multi-devises avec des institutions financières de renommée mondiale. Gérez vos fonds et effectuez des transactions internationales sans friction.",
+  },
+  {
+    icon: <Clock className="h-6 w-6 text-primary" />,
+    category: "Efficacité",
+    title: "Rapidité 48h",
+    description: "Votre société est enregistrée en ligne en moins de 48 heures. Un processus 100% digitalisé pour un lancement rapide de vos activités.",
+  },
+  {
+    icon: <Lock className="h-6 w-6 text-primary" />,
+    category: "Protection",
+    title: "Confidentialité",
+    description: "L'anonymat des actionnaires et des directeurs est garanti par la loi. Protégez votre patrimoine et votre vie privée avec une discrétion absolue.",
+  }
+];
+
+
 export function Features() {
   const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
   return (
@@ -54,35 +82,16 @@ export function Features() {
             pour les entrepreneurs.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6">
-          <div className="md:col-span-2 relative">
-            <div className="absolute -inset-4 bg-[radial-gradient(ellipse_at_center,_rgba(29,78,216,0.15),_transparent_80%)] blur-3xl -z-10" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {featuresData.map((feature, index) => (
             <FeatureCard
-              icon={<Shield className="h-6 w-6 text-primary" />}
-              category="Sérénité Fiscale"
-              title="0% Fiscalité"
-              description="Profitez d'une exonération totale d'impôts sur les bénéfices, les dividendes et les plus-values réalisés hors de Hong Kong. Une structure fiscale simple et avantageuse pour maximiser votre rentabilité."
+              key={index}
+              icon={feature.icon}
+              category={feature.category}
+              title={feature.title}
+              description={feature.description}
             />
-          </div>
-          <FeatureCard
-            className="md:row-span-2"
-            icon={<CreditCard className="h-6 w-6 text-primary" />}
-            category="Accès Global"
-            title="Banking International"
-            description="Ouvrez des comptes bancaires multi-devises avec des institutions financières de renommée mondiale. Gérez vos fonds et effectuez des transactions internationales sans friction, avec des cartes de débit et de crédit internationales."
-          />
-          <FeatureCard
-            icon={<Clock className="h-6 w-6 text-primary" />}
-            category="Efficacité"
-            title="Rapidité 48h"
-            description="Votre société est enregistrée en ligne en moins de 48 heures. Un processus 100% digitalisé pour un lancement rapide de vos activités."
-          />
-          <FeatureCard
-            icon={<Lock className="h-6 w-6 text-primary" />}
-            category="Protection"
-            title="Confidentialité"
-            description="L'anonymat des actionnaires et des directeurs est garanti par la loi. Protégez votre patrimoine et votre vie privée avec une discrétion absolue."
-          />
+          ))}
         </div>
       </div>
     </section>
