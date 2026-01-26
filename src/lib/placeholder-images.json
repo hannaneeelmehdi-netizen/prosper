@@ -1,6 +1,12 @@
 {
   "placeholderImages": [
     {
+      "id": "hero-skyline",
+      "description": "Modern city skyline at night for the hero section background",
+      "imageUrl": "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "city skyline"
+    },
+    {
       "id": "testimonial-avatar-1",
       "description": "Avatar for a testimonial",
       "imageUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwZXJzb24lMjBmYWNlfGVufDB8fHx8MTc2OTQxMTQ1NXww&ixlib=rb-4.1.0&q=80&w=1080",
@@ -9,7 +15,7 @@
     {
       "id": "testimonial-avatar-2",
       "description": "Avatar for a testimonial",
-      "imageUrl": "https://images.unsplash.com/photo-1521146764736-56c929d59c83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwZXJzb24lMjBmYWNlfGVufDB8fHx8MTc2OTQxMTQ1NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-15211467644736-56c929d59c83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwZXJzb24lMjBmYWNlfGVufDB8fHx8MTc2OTQxMTQ1NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "person face"
     },
     {

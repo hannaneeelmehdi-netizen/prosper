@@ -1,12 +1,11 @@
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex h-14 max-w-6xl items-center px-4 sm:px-6 lg:px-8">
-        <div className="mr-4 flex">
-          <Link className="mr-6 flex items-center space-x-2" href="/">
+        <div className="flex flex-1 items-center justify-start">
+          <Link className="flex items-center space-x-2" href="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 256 256"
@@ -17,11 +16,6 @@ export function Header() {
             </svg>
             <span className="font-bold">Apex</span>
           </Link>
-        </div>
-        <div className="flex flex-1 items-center justify-end space-x-2">
-          <Button asChild>
-            <Link href="#contact">Contact Sales</Link>
-          </Button>
         </div>
       </div>
     </header>
