@@ -21,13 +21,13 @@ import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
+    message: "Le nom doit contenir au moins 2 caractères.",
   }),
   email: z.string().email({
-    message: "Please enter a valid email address.",
+    message: "Veuillez entrer une adresse e-mail valide.",
   }),
   message: z.string().min(10, {
-    message: "Message must be at least 10 characters.",
+    message: "Le message doit contenir au moins 10 caractères.",
   }),
 });
 
@@ -45,15 +45,14 @@ export function Contact() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const subject = encodeURIComponent(`Contact Form Submission from ${values.name}`);
-    const body = encodeURIComponent(`Name: ${values.name}\nEmail: ${values.email}\n\nMessage:\n${values.message}`);
+    const subject = encodeURIComponent(`Prise de contact de ${values.name}`);
+    const body = encodeURIComponent(`Nom: ${values.name}\nEmail: ${values.email}\n\nMessage:\n${values.message}`);
     
-    // In a real app, you would send this to a backend. For this static site, we'll use mailto.
     window.location.href = `mailto:contact@example.com?subject=${subject}&body=${body}`;
 
     toast({
-      title: "Opening your email client",
-      description: "Please complete and send the email.",
+      title: "Ouverture de votre client de messagerie",
+      description: "Veuillez compléter et envoyer l'e-mail.",
     });
     form.reset();
   }
@@ -62,13 +61,13 @@ export function Contact() {
     <section 
       ref={ref}
       id="contact" 
-      className={cn("w-full py-32 transition-all duration-600 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
+      className={cn("w-full py-24 transition-all duration-600 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="text-4xl font-bold tracking-tight">Contact Us</h2>
+          <h2 className="text-4xl font-bold tracking-tight">Contactez-nous</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            Have a question or want to work together? Drop us a line.
+            Vous avez une question ou souhaitez collaborer ? Laissez-nous un message.
           </p>
         </div>
         <div className="mx-auto max-w-xl">
@@ -79,9 +78,9 @@ export function Contact() {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Name</FormLabel>
+                    <FormLabel>Nom</FormLabel>
                     <FormControl>
-                      <Input placeholder="Your Name" {...field} />
+                      <Input placeholder="Votre Nom" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -94,7 +93,7 @@ export function Contact() {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="your.email@company.com" {...field} />
+                      <Input placeholder="votre.email@entreprise.com" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -108,7 +107,7 @@ export function Contact() {
                     <FormLabel>Message</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Tell us how we can help"
+                        placeholder="Dites-nous comment nous pouvons vous aider"
                         className="min-h-[120px]"
                         {...field}
                       />
@@ -118,7 +117,7 @@ export function Contact() {
                 )}
               />
               <Button type="submit" className="w-full" size="lg">
-                Send Message
+                Envoyer le message
               </Button>
             </form>
           </Form>

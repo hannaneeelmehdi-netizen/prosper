@@ -13,21 +13,21 @@ import { cn } from "@/lib/utils";
 const services = [
   {
     icon: <TrendingUp className="h-8 w-8 text-primary" />,
-    title: "Strategic Growth Consulting",
+    title: "Conseil en croissance stratégique",
     description:
-      "Unlock your company's full potential with data-driven strategies and market analysis that deliver tangible results.",
+      "Libérez tout le potentiel de votre entreprise avec des stratégies basées sur les données et des analyses de marché qui produisent des résultats tangibles.",
   },
   {
     icon: <ShieldCheck className="h-8 w-8 text-primary" />,
-    title: "Operational Excellence",
+    title: "Excellence Opérationnelle",
     description:
-      "Streamline processes, enhance efficiency, and build a resilient operational framework for sustainable success.",
+      "Rationalisez les processus, améliorez l'efficacité et construisez un cadre opérationnel résilient pour un succès durable.",
   },
   {
     icon: <Code className="h-8 w-8 text-primary" />,
-    title: "Digital Transformation",
+    title: "Transformation Numérique",
     description:
-      "Leverage cutting-edge technology to innovate, disrupt, and stay ahead of the curve in a rapidly evolving digital landscape.",
+      "Tirez parti des technologies de pointe pour innover, perturber et rester en tête dans un paysage numérique en évolution rapide.",
   },
 ];
 
@@ -36,16 +36,15 @@ export function Services() {
   return (
     <section 
       ref={ref}
-      className={cn("w-full border-y border-white/10 py-32 transition-all duration-600 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
+      className={cn("w-full border-y border-white/10 py-24 transition-all duration-600 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-4xl font-bold tracking-tight">
-            A Suite of Solutions for Modern Leaders
+            Une suite de solutions pour les dirigeants modernes
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            We provide the expertise and support to navigate your most complex
-            business challenges.
+            Nous fournissons l'expertise et le soutien pour naviguer dans vos défis commerciaux les plus complexes.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">

@@ -13,7 +13,7 @@ export function Expertise() {
     <section
       ref={ref}
       id="expertise"
-      className={cn("w-full py-32 transition-all duration-600 ease-out border-t border-white/10", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
+      className={cn("w-full py-24 transition-all duration-600 ease-out border-t border-white/10", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
          <div className="mb-12 text-center">
@@ -36,7 +36,7 @@ export function Expertise() {
               Fondé par des experts fiscaux et juridiques, Apex simplifie l'accès à l'Asie pour les entrepreneurs francophones.
             </p>
             <div className="pt-4">
-              <p className="font-serif text-lg italic text-foreground/80">— The Apex Team</p>
+              <p className="font-serif text-lg italic text-foreground/80">— L'équipe Apex</p>
             </div>
           </div>
         </div>

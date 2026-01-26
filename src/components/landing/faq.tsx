@@ -16,19 +16,19 @@ type FAQItem = {
 
 const faqs: FAQItem[] = [
   {
-    question: "What industries do you specialize in?",
+    question: "Dans quels secteurs vous spécialisez-vous ?",
     answer:
-      "We have a diverse portfolio of clients across various sectors including technology, finance, healthcare, and retail. Our methodologies are adaptable to the unique challenges of any industry.",
+      "Nous avons un portefeuille diversifié de clients dans divers secteurs, notamment la technologie, la finance, la santé et la vente au détail. Nos méthodologies sont adaptables aux défis uniques de chaque secteur.",
   },
   {
-    question: "How do you measure the success of an engagement?",
+    question: "Comment mesurez-vous le succès d'un engagement ?",
     answer:
-      "Success is measured against pre-defined Key Performance Indicators (KPIs) that are mutually agreed upon at the start of our partnership. These typically include metrics like revenue growth, cost savings, market share, and customer satisfaction.",
+      "Le succès est mesuré par rapport à des indicateurs de performance clés (KPI) prédéfinis et convenus d'un commun accord au début de notre partenariat. Ceux-ci incluent généralement des mesures telles que la croissance des revenus, les économies de coûts, la part de marché et la satisfaction client.",
   },
   {
-    question: "What is the typical engagement process?",
+    question: "Quel est le processus d'engagement typique ?",
     answer:
-      "Our process begins with a deep-dive discovery phase, followed by strategy formulation, implementation, and continuous monitoring. We work collaboratively with your team at every stage to ensure alignment and achieve optimal outcomes.",
+      "Notre processus commence par une phase de découverte approfondie, suivie de la formulation de la stratégie, de la mise en œuvre et d'un suivi continu. Nous travaillons en collaboration avec votre équipe à chaque étape pour garantir l'alignement et obtenir des résultats optimaux.",
   },
 ];
 
@@ -37,15 +37,15 @@ export function FAQ() {
   return (
     <section 
       ref={ref}
-      className={cn("w-full py-32 transition-all duration-600 ease-out border-t border-white/10", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
+      className={cn("w-full py-24 transition-all duration-600 ease-out border-t border-white/10", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-4xl font-bold tracking-tight">
-            Frequently Asked Questions
+            Questions Fréquemment Posées
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            Find answers to common questions about our services and process.
+            Trouvez les réponses aux questions courantes sur nos services et notre processus.
           </p>
         </div>
         <Accordion type="single" collapsible className="mx-auto w-full max-w-3xl">

@@ -8,23 +8,23 @@ const testimonials = [
   {
     id: 1,
     quote:
-      "Apex revolutionized our workflow. Their strategic insights were a complete game-changer for our quarterly growth.",
+      "Apex a révolutionné notre flux de travail. Leurs connaissances stratégiques ont complètement changé la donne pour notre croissance trimestrielle.",
     author: "Jian Yang",
-    title: "CEO, Innovate Inc.",
+    title: "PDG, Innovate Inc.",
   },
   {
     id: 2,
     quote:
-      "Working with Apex has been an absolute pleasure. Their team is professional, responsive, and truly understands our needs.",
+      "Travailler avec Apex a été un plaisir absolu. Leur équipe est professionnelle, réactive et comprend vraiment nos besoins.",
     author: "Sarah Jones",
-    title: "COO, Future Enterprises",
+    title: "Directrice des opérations, Future Enterprises",
   },
   {
     id: 3,
     quote:
-      "The operational efficiencies we've gained are remarkable. I cannot recommend Apex Corporate Solutions enough.",
+      "Les gains d'efficacité opérationnelle que nous avons obtenus sont remarquables. Je ne saurais trop recommander Apex Corporate Solutions.",
     author: "David Chen",
-    title: "Founder, Quantum Dynamics",
+    title: "Fondateur, Quantum Dynamics",
   },
 ];
 
@@ -34,15 +34,15 @@ export function Testimonials() {
   return (
     <section 
       ref={ref}
-      className={cn("w-full py-32 transition-all duration-600 ease-out border-t border-white/10", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
+      className={cn("w-full py-24 transition-all duration-600 ease-out border-t border-white/10", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-4xl font-bold tracking-tight">
-            Trusted by Industry Leaders
+            Approuvé par les leaders de l'industrie
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            Don't just take our word for it. Here's what our clients have to say.
+            Ne nous croyez pas sur parole. Voici ce que nos clients ont à dire.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
