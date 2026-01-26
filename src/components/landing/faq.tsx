@@ -67,7 +67,7 @@ export function FAQ() {
             href="https://wa.me/32494390528" 
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
+            className="text-green-500 hover:text-green-600 transition-colors"
           >
             Une autre question ? Parlez-nous sur WhatsApp
           </Link>
