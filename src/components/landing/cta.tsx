@@ -1,9 +1,17 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useInView } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
 
 export function CTA() {
+  const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
   return (
-    <section className="w-full border-y border-white/10 py-32">
+    <section 
+      ref={ref}
+      className={cn("w-full border-y border-white/10 py-32 transition-all duration-600 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
+    >
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold tracking-tight">
           Ready to Redefine Your Success?

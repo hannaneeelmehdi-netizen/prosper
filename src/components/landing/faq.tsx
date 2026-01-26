@@ -6,6 +6,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useInView } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
 
 type FAQItem = {
   question: string;
@@ -31,8 +33,12 @@ const faqs: FAQItem[] = [
 ];
 
 export function FAQ() {
+  const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
   return (
-    <section className="w-full py-32">
+    <section 
+      ref={ref}
+      className={cn("w-full py-32 transition-all duration-600 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-4xl font-bold tracking-tight">

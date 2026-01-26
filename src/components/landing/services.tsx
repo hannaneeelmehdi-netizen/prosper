@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardDescription,
@@ -5,6 +7,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Code, ShieldCheck, TrendingUp } from "lucide-react";
+import { useInView } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
 
 const services = [
   {
@@ -28,8 +32,12 @@ const services = [
 ];
 
 export function Services() {
+  const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
   return (
-    <section className="w-full border-y border-white/10 py-32">
+    <section 
+      ref={ref}
+      className={cn("w-full border-y border-white/10 py-32 transition-all duration-600 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-4xl font-bold tracking-tight">
@@ -44,7 +52,7 @@ export function Services() {
           {services.map((service, index) => (
             <Card
               key={index}
-              className="bg-[#151515]/[0.6] backdrop-blur-sm border border-[#333333] transition-colors duration-300 hover:border-primary/50"
+              className="bg-[#151515]/[0.6] backdrop-blur-sm border border-[#333333] transition-all duration-300 hover:border-primary/50 hover:scale-105"
             >
               <CardHeader>
                 <div className="mb-4">{service.icon}</div>

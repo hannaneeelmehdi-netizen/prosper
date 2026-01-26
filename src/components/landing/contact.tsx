@@ -16,6 +16,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useInView } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -31,6 +33,7 @@ const formSchema = z.object({
 
 export function Contact() {
   const { toast } = useToast();
+  const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -56,7 +59,11 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="w-full py-32">
+    <section 
+      ref={ref}
+      id="contact" 
+      className={cn("w-full py-32 transition-all duration-600 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-4xl font-bold tracking-tight">Contact Us</h2>

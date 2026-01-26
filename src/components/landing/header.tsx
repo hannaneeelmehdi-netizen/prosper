@@ -1,8 +1,27 @@
+"use client";
+
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 export function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    // Initial check
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur-sm">
+    <header className={cn(
+      "sticky top-0 z-50 w-full transition-colors duration-300",
+      scrolled ? "border-b border-border/40 bg-background/95 backdrop-blur-sm" : "bg-transparent"
+    )}>
       <div className="mx-auto flex h-14 max-w-6xl items-center px-4 sm:px-6 lg:px-8">
         <div className="flex flex-1 items-center justify-start">
           <Link className="flex items-center space-x-2" href="/">

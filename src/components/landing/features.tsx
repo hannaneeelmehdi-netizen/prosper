@@ -1,4 +1,8 @@
+"use client";
+
 import { Shield, CreditCard, Clock, Lock } from "lucide-react";
+import { useInView } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
 
 const FeatureCard = ({
   icon,
@@ -14,10 +18,13 @@ const FeatureCard = ({
   className?: string;
 }) => (
   <div
-    className={`rounded-2xl p-6 bg-[#151515]/[0.6] backdrop-blur-sm border border-[#333333] shadow-xl flex flex-col h-full ${className}`}
+    className={cn(
+      `group rounded-2xl p-6 bg-[#151515]/[0.6] backdrop-blur-sm border border-[#333333] shadow-xl flex flex-col h-full transition-all duration-300 hover:scale-[1.02] hover:border-white`,
+      className
+    )}
   >
     <div className="mb-4">
-      <div className="w-fit bg-primary/10 p-2 rounded-lg mb-4">
+      <div className="w-fit bg-primary/10 p-2 rounded-lg mb-4 transition-shadow duration-300 group-hover:shadow-lg group-hover:shadow-primary/50">
         {icon}
       </div>
       <p className="text-sm uppercase text-muted-foreground tracking-wider">
@@ -30,8 +37,13 @@ const FeatureCard = ({
 );
 
 export function Features() {
+  const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
   return (
-    <section id="features" className="w-full py-32">
+    <section
+      ref={ref}
+      id="features"
+      className={cn("w-full py-32 transition-all duration-600 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-4xl font-bold tracking-tight">

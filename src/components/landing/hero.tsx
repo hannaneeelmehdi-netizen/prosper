@@ -1,13 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { useInView } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
 
 export function Hero() {
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-skyline");
+  const [ref, inView] = useInView({ once: true });
 
   return (
-    <section className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center text-white">
+    <section 
+      ref={ref}
+      className={cn("relative w-full h-[80vh] min-h-[600px] flex items-center justify-center text-white transition-all duration-600 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
+    >
       {heroImage && (
         <Image
           src={heroImage.imageUrl}
