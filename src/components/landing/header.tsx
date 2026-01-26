@@ -3,9 +3,12 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/context/language-context";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,10 +21,10 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { href: "#features", label: "Avantages" },
-    { href: "#roadmap", label: "Processus" },
-    { href: "#pricing", label: "Tarifs" },
-    { href: "#comparison", label: "Comparatif" },
+    { href: "#features", label: t('header.nav.benefits') },
+    { href: "#roadmap", label: t('header.nav.process') },
+    { href: "#pricing", label: t('header.nav.pricing') },
+    { href: "#comparison", label: t('header.nav.comparison') },
   ];
 
   return (
@@ -38,17 +41,20 @@ export function Header() {
           </Link>
         </div>
         
-        <nav className="hidden items-center space-x-8 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="flex items-center gap-4">
+          <nav className="hidden items-center space-x-8 md:flex">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+          <LanguageSwitcher />
+        </div>
       </div>
     </header>
   );

@@ -4,20 +4,22 @@ import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { useInView } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/context/language-context";
 
 export function Expertise() {
   const expertiseImage = PlaceHolderImages.find((img) => img.id === "expertise-team");
   const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
+  const { t } = useTranslation();
 
   return (
     <section
       ref={ref}
       id="expertise"
-      className={cn("w-full py-24 transition-all duration-600 ease-out border-t border-white/10", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
+      className={cn("w-full py-12 transition-all duration-600 ease-out border-t border-white/10", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
          <div className="mb-12 text-center">
-          <h2 className="text-4xl font-bold tracking-tight">Notre Expertise</h2>
+          <h2 className="text-4xl font-bold tracking-tight">{t('expertise.title')}</h2>
         </div>
         <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
           <div className="relative h-96 w-full rounded-2xl overflow-hidden shadow-2xl">
@@ -33,10 +35,10 @@ export function Expertise() {
           </div>
           <div className="space-y-6">
             <p className="text-xl md:text-2xl font-light text-muted-foreground leading-relaxed">
-              Fondé par des experts fiscaux et juridiques, Apex simplifie l'accès à l'Asie pour les entrepreneurs francophones.
+              {t('expertise.text')}
             </p>
             <div className="pt-4">
-              <p className="font-serif text-lg italic text-foreground/80">— L'équipe Apex</p>
+              <p className="font-serif text-lg italic text-foreground/80">— {t('expertise.signature')}</p>
             </div>
           </div>
         </div>

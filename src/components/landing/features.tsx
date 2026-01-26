@@ -3,6 +3,7 @@
 import { Shield, CreditCard, Clock, Lock } from "lucide-react";
 import { useInView } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/context/language-context";
 
 const FeatureCard = ({
   icon,
@@ -36,57 +37,39 @@ const FeatureCard = ({
   </div>
 );
 
-const featuresData = [
-  {
-    icon: <Shield className="h-6 w-6 text-primary" />,
-    category: "Sérénité Fiscale",
-    title: "0% Fiscalité",
-    description: "Profitez d'une exonération totale d'impôts sur les bénéfices, les dividendes et les plus-values réalisés hors de Hong Kong. Une structure fiscale simple et avantageuse pour maximiser votre rentabilité.",
-  },
-  {
-    icon: <CreditCard className="h-6 w-6 text-primary" />,
-    category: "Accès Global",
-    title: "Banking International",
-    description: "Ouvrez des comptes bancaires multi-devises avec des institutions financières de renommée mondiale. Gérez vos fonds et effectuez des transactions internationales sans friction.",
-  },
-  {
-    icon: <Clock className="h-6 w-6 text-primary" />,
-    category: "Efficacité",
-    title: "Rapidité 48h",
-    description: "Votre société est enregistrée en ligne en moins de 48 heures. Un processus 100% digitalisé pour un lancement rapide de vos activités.",
-  },
-  {
-    icon: <Lock className="h-6 w-6 text-primary" />,
-    category: "Protection",
-    title: "Confidentialité",
-    description: "L'anonymat des actionnaires et des directeurs est garanti par la loi. Protégez votre patrimoine et votre vie privée avec une discrétion absolue.",
-  }
+const icons = [
+  <Shield className="h-6 w-6 text-primary" />,
+  <CreditCard className="h-6 w-6 text-primary" />,
+  <Clock className="h-6 w-6 text-primary" />,
+  <Lock className="h-6 w-6 text-primary" />,
 ];
-
 
 export function Features() {
   const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
+  const { t } = useTranslation();
+  const featuresData = t('features.cards', { returnObjects: true }) as any[];
+
+
   return (
     <section
       ref={ref}
       id="features"
-      className={cn("w-full py-24 transition-all duration-600 ease-out border-t border-white/10", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
+      className={cn("w-full py-12 transition-all duration-600 ease-out border-t border-white/10", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-4xl font-bold tracking-tight">
-            Une fondation solide pour votre entreprise mondiale
+            {t('features.title')}
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
-            Découvrez les piliers qui font de Hong Kong le choix stratégique
-            pour les entrepreneurs.
+            {t('features.subtitle')}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {featuresData.map((feature, index) => (
+          {featuresData.map((feature: any, index: number) => (
             <FeatureCard
               key={index}
-              icon={feature.icon}
+              icon={icons[index]}
               category={feature.category}
               title={feature.title}
               description={feature.description}

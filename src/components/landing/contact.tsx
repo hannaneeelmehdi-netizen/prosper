@@ -18,22 +18,25 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { useInView } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
-
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Le nom doit contenir au moins 2 caractères.",
-  }),
-  email: z.string().email({
-    message: "Veuillez entrer une adresse e-mail valide.",
-  }),
-  message: z.string().min(10, {
-    message: "Le message doit contenir au moins 10 caractères.",
-  }),
-});
+import { useTranslation } from "@/context/language-context";
+import { useMemo } from "react";
 
 export function Contact() {
   const { toast } = useToast();
   const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
+  const { t } = useTranslation();
+
+  const formSchema = useMemo(() => z.object({
+    name: z.string().min(2, {
+      message: t('contact.form.name_error'),
+    }),
+    email: z.string().email({
+      message: t('contact.form.email_error'),
+    }),
+    message: z.string().min(10, {
+      message: t('contact.form.message_error'),
+    }),
+  }), [t]);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -45,14 +48,14 @@ export function Contact() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const subject = encodeURIComponent(`Prise de contact de ${values.name}`);
+    const subject = encodeURIComponent(`${t('contact.form.subject_prefix')} ${values.name}`);
     const body = encodeURIComponent(`Nom: ${values.name}\nEmail: ${values.email}\n\nMessage:\n${values.message}`);
     
     window.location.href = `mailto:leaouer@gmail.com?subject=${subject}&body=${body}`;
 
     toast({
-      title: "Ouverture de votre client de messagerie",
-      description: "Veuillez compléter et envoyer l'e-mail.",
+      title: t('contact.form.toast_title'),
+      description: t('contact.form.toast_description'),
     });
     form.reset();
   }
@@ -65,9 +68,9 @@ export function Contact() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="text-4xl font-bold tracking-tight">Contactez-nous</h2>
+          <h2 className="text-4xl font-bold tracking-tight">{t('contact.title')}</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            Vous avez une question ou souhaitez collaborer ? Laissez-nous un message.
+            {t('contact.subtitle')}
           </p>
         </div>
         <div className="mx-auto max-w-xl">
@@ -78,9 +81,9 @@ export function Contact() {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Nom</FormLabel>
+                    <FormLabel>{t('contact.form.name')}</FormLabel>
                     <FormControl>
-                      <Input placeholder="Votre Nom" {...field} />
+                      <Input placeholder={t('contact.form.name_placeholder')} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -91,9 +94,9 @@ export function Contact() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <FormLabel>{t('contact.form.email')}</FormLabel>
                     <FormControl>
-                      <Input placeholder="votre.email@entreprise.com" {...field} />
+                      <Input placeholder={t('contact.form.email_placeholder')} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -104,10 +107,10 @@ export function Contact() {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Message</FormLabel>
+                    <FormLabel>{t('contact.form.message')}</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Dites-nous comment nous pouvons vous aider"
+                        placeholder={t('contact.form.message_placeholder')}
                         className="min-h-[120px]"
                         {...field}
                       />
@@ -117,7 +120,7 @@ export function Contact() {
                 )}
               />
               <Button type="submit" className="w-full" size="lg">
-                Envoyer le message
+                {t('contact.form.submit_button')}
               </Button>
             </form>
           </Form>
