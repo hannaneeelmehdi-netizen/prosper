@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 export function TaxSimulator() {
   const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
-  const [benefit, setBenefit] = useState(100000);
+  const [benefit, setBenefit] = useState(80000);
 
   const taxEurope = benefit * 0.25;
   const savings = taxEurope; // In HK, tax is 0
@@ -50,10 +50,10 @@ export function TaxSimulator() {
               </div>
               <Slider
                 id="benefit-slider"
-                defaultValue={[100000]}
-                min={0}
+                defaultValue={[80000]}
+                min={10000}
                 max={500000}
-                step={1000}
+                step={5000}
                 onValueChange={(value) => setBenefit(value[0])}
                 className="[&_[role=slider]]:bg-white [&_[role=slider]]:border-0 [&_[role=slider]]:shadow-lg [&>span>span]:bg-primary [&>span]:bg-gray-800"
               />
@@ -69,7 +69,7 @@ export function TaxSimulator() {
               <div className="text-center">
                 <h3 className="font-semibold text-muted-foreground mb-2">Impôt Hong Kong (0%)</h3>
                 <p className="text-4xl font-bold text-green-500">
-                  - {formatCurrency(0)}
+                  {formatCurrency(0)}
                 </p>
               </div>
             </div>
@@ -79,6 +79,11 @@ export function TaxSimulator() {
                 <p className="text-5xl font-bold text-white" style={{ textShadow: '0 0 15px #FBBF24' }}>
                     + {formatCurrency(savings)}
                 </p>
+                {savings > 1500 && (
+                  <p className="mt-4 text-sm text-yellow-400 font-semibold">
+                    Rentabilité immédiate : x10 sur votre investissement
+                  </p>
+                )}
             </div>
           </div>
         </div>
