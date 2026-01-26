@@ -64,7 +64,7 @@ export function FAQ() {
 
         <div className="mt-8 text-center">
           <Link
-            href="https://wa.me/1234567890" 
+            href="https://wa.me/32494390528" 
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground transition-colors"
