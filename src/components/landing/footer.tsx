@@ -72,7 +72,6 @@ export function Footer() {
               <li><Link href="#roadmap" className="text-sm text-zinc-400 hover:text-white transition-colors">Notre Processus</Link></li>
               <li><Link href="#pricing" className="text-sm text-zinc-400 hover:text-white transition-colors">Tarifs & Services</Link></li>
               <li><Link href="#simulator" className="text-sm text-zinc-400 hover:text-white transition-colors">Simulateur Fiscal</Link></li>
-              <li><Link href="/login" className="text-sm text-zinc-400 hover:text-white transition-colors">Espace Client</Link></li>
             </ul>
           </div>
 
