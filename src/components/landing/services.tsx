@@ -29,7 +29,7 @@ const services = [
 
 export function Services() {
   return (
-    <section className="w-full border-y bg-card py-24">
+    <section className="w-full border-y border-white/10 py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-4xl font-bold tracking-tight">
@@ -44,7 +44,7 @@ export function Services() {
           {services.map((service, index) => (
             <Card
               key={index}
-              className="border-border/60 bg-background transition-colors duration-300 hover:border-primary/50"
+              className="bg-[#151515]/[0.6] backdrop-blur-sm border border-[#333333] transition-colors duration-300 hover:border-primary/50"
             >
               <CardHeader>
                 <div className="mb-4">{service.icon}</div>

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function CTA() {
   return (
-    <section className="w-full border-y bg-card py-24">
+    <section className="w-full border-y border-white/10 py-32">
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold tracking-tight">
           Ready to Redefine Your Success?

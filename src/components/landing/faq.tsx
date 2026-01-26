@@ -32,7 +32,7 @@ const faqs: FAQItem[] = [
 
 export function FAQ() {
   return (
-    <section className="w-full py-24">
+    <section className="w-full py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-4xl font-bold tracking-tight">

@@ -14,7 +14,7 @@ const FeatureCard = ({
   className?: string;
 }) => (
   <div
-    className={`rounded-2xl p-6 bg-white/5 backdrop-blur-sm border border-white/10 shadow-xl flex flex-col ${className}`}
+    className={`rounded-2xl p-6 bg-[#151515]/[0.6] backdrop-blur-sm border border-[#333333] shadow-xl flex flex-col h-full ${className}`}
   >
     <div className="mb-4">
       <div className="w-fit bg-primary/10 p-2 rounded-lg mb-4">
@@ -31,7 +31,7 @@ const FeatureCard = ({
 
 export function Features() {
   return (
-    <section id="features" className="w-full py-24">
+    <section id="features" className="w-full py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-4xl font-bold tracking-tight">
@@ -43,13 +43,15 @@ export function Features() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6">
-          <FeatureCard
-            className="md:col-span-2"
-            icon={<Shield className="h-6 w-6 text-primary" />}
-            category="Sérénité Fiscale"
-            title="0% Fiscalité"
-            description="Profitez d'une exonération totale d'impôts sur les bénéfices, les dividendes et les plus-values réalisés hors de Hong Kong. Une structure fiscale simple et avantageuse pour maximiser votre rentabilité."
-          />
+          <div className="md:col-span-2 relative">
+            <div className="absolute -inset-4 bg-[radial-gradient(ellipse_at_center,_rgba(29,78,216,0.15),_transparent_80%)] blur-3xl -z-10" />
+            <FeatureCard
+              icon={<Shield className="h-6 w-6 text-primary" />}
+              category="Sérénité Fiscale"
+              title="0% Fiscalité"
+              description="Profitez d'une exonération totale d'impôts sur les bénéfices, les dividendes et les plus-values réalisés hors de Hong Kong. Une structure fiscale simple et avantageuse pour maximiser votre rentabilité."
+            />
+          </div>
           <FeatureCard
             className="md:row-span-2"
             icon={<CreditCard className="h-6 w-6 text-primary" />}

@@ -35,7 +35,7 @@ export function Testimonials() {
   };
 
   return (
-    <section className="w-full py-24">
+    <section className="w-full py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-4xl font-bold tracking-tight">
@@ -49,7 +49,10 @@ export function Testimonials() {
           {testimonials.map((testimonial) => {
             const avatar = getAvatar(testimonial.avatarId);
             return (
-              <Card key={testimonial.id} className="flex flex-col">
+              <Card
+                key={testimonial.id}
+                className="flex flex-col bg-[#151515]/[0.6] backdrop-blur-sm border border-[#333333]"
+              >
                 <CardContent className="flex flex-grow flex-col justify-between p-6">
                   <blockquote className="mb-6 flex-grow text-lg text-foreground">
                     "{testimonial.quote}"
