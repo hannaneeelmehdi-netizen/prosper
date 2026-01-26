@@ -1,8 +1,6 @@
 "use client";
 
-import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { useInView } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 
@@ -13,7 +11,6 @@ const testimonials = [
       "Apex revolutionized our workflow. Their strategic insights were a complete game-changer for our quarterly growth.",
     author: "Jian Yang",
     title: "CEO, Innovate Inc.",
-    avatarId: "testimonial-avatar-1",
   },
   {
     id: 2,
@@ -21,7 +18,6 @@ const testimonials = [
       "Working with Apex has been an absolute pleasure. Their team is professional, responsive, and truly understands our needs.",
     author: "Sarah Jones",
     title: "COO, Future Enterprises",
-    avatarId: "testimonial-avatar-2",
   },
   {
     id: 3,
@@ -29,14 +25,10 @@ const testimonials = [
       "The operational efficiencies we've gained are remarkable. I cannot recommend Apex Corporate Solutions enough.",
     author: "David Chen",
     title: "Founder, Quantum Dynamics",
-    avatarId: "testimonial-avatar-3",
   },
 ];
 
 export function Testimonials() {
-  const getAvatar = (avatarId: string) => {
-    return PlaceHolderImages.find((img) => img.id === avatarId);
-  };
   const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
 
   return (
@@ -54,41 +46,26 @@ export function Testimonials() {
           </p>
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          {testimonials.map((testimonial) => {
-            const avatar = getAvatar(testimonial.avatarId);
-            return (
-              <Card
-                key={testimonial.id}
-                className="flex flex-col bg-[#151515]/[0.6] backdrop-blur-sm border border-[#333333] transition-transform duration-300 hover:scale-105"
-              >
-                <CardContent className="flex flex-grow flex-col justify-between p-6">
-                  <blockquote className="mb-6 flex-grow text-lg text-foreground">
-                    "{testimonial.quote}"
-                  </blockquote>
-                  <div className="flex items-center">
-                    {avatar && (
-                      <Image
-                        src={avatar.imageUrl}
-                        alt={avatar.description}
-                        width={40}
-                        height={40}
-                        className="rounded-full"
-                        data-ai-hint={avatar.imageHint}
-                      />
-                    )}
-                    <div className="ml-4">
-                      <p className="font-semibold text-foreground">
-                        {testimonial.author}
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        {testimonial.title}
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
+          {testimonials.map((testimonial) => (
+            <Card
+              key={testimonial.id}
+              className="flex flex-col bg-[#151515]/[0.6] backdrop-blur-sm border border-[#333333] transition-transform duration-300 hover:scale-105"
+            >
+              <CardContent className="flex flex-grow flex-col justify-between p-6">
+                <blockquote className="mb-6 flex-grow text-lg text-foreground">
+                  "{testimonial.quote}"
+                </blockquote>
+                <div>
+                  <p className="font-semibold text-foreground">
+                    {testimonial.author}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {testimonial.title}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
