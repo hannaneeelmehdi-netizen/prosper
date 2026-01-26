@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import { useInView } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 type FAQItem = {
   question: string;
@@ -16,19 +17,16 @@ type FAQItem = {
 
 const faqs: FAQItem[] = [
   {
-    question: "Dans quels secteurs vous spécialisez-vous ?",
-    answer:
-      "Nous avons un portefeuille diversifié de clients dans divers secteurs, notamment la technologie, la finance, la santé et la vente au détail. Nos méthodologies sont adaptables aux défis uniques de chaque secteur.",
+    question: "Est-ce légal de vivre en France avec une société à Hong Kong ?",
+    answer: "Oui. Hong Kong n'est pas un paradis fiscal mais une juridiction à fiscalité territoriale. Vous devez simplement déclarer vos dividendes ou salaires perçus dans votre pays de résidence.",
   },
   {
-    question: "Comment mesurez-vous le succès d'un engagement ?",
-    answer:
-      "Le succès est mesuré par rapport à des indicateurs de performance clés (KPI) prédéfinis et convenus d'un commun accord au début de notre partenariat. Ceux-ci incluent généralement des mesures telles que la croissance des revenus, les économies de coûts, la part de marché et la satisfaction client.",
+    question: "Dois-je me rendre sur place pour ouvrir le compte bancaire ?",
+    answer: "Non. Grâce à nos partenariats avec Airwallex, Wise et Statrys, tout se fait 100% à distance.",
   },
   {
-    question: "Quel est le processus d'engagement typique ?",
-    answer:
-      "Notre processus commence par une phase de découverte approfondie, suivie de la formulation de la stratégie, de la mise en œuvre et d'un suivi continu. Nous travaillons en collaboration avec votre équipe à chaque étape pour garantir l'alignement et obtenir des résultats optimaux.",
+    question: "Quels sont les frais de renouvellement annuels ?",
+    answer: "Le renouvellement inclut le Company Secretary, le Siège Social et la déclaration annuelle. Comptez environ 900€/an tout inclus.",
   },
 ];
 
@@ -63,6 +61,18 @@ export function FAQ() {
             </AccordionItem>
           ))}
         </Accordion>
+
+        <div className="mt-8 text-center">
+          <Link
+            href="https://wa.me/1234567890" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Une autre question ? Parlez-nous sur WhatsApp
+          </Link>
+        </div>
+
       </div>
     </section>
   );
