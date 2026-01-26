@@ -1,23 +1,18 @@
 "use client";
 
-import { useState, useTransition } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { getNewFaqs } from "@/app/actions";
-import { useToast } from "@/hooks/use-toast";
 
 type FAQItem = {
   question: string;
   answer: string;
 };
 
-const initialFaqs: FAQItem[] = [
+const faqs: FAQItem[] = [
   {
     question: "What industries do you specialize in?",
     answer:
@@ -35,57 +30,7 @@ const initialFaqs: FAQItem[] = [
   },
 ];
 
-const parseFaqs = (faqString: string): FAQItem[] => {
-    const faqs: FAQItem[] = [];
-    // Split by question markers (either lines starting with ** or ###)
-    const questionBlocks = faqString.split(/(?=\*\*|###\s)/).filter(block => block.trim() !== '');
-
-    for (const block of questionBlocks) {
-        const lines = block.trim().split('\n');
-        let question = lines[0].replace(/\*\*|###\s/g, '').trim();
-        const answer = lines.slice(1).join('\n').trim();
-
-        if (question && answer) {
-            // Further clean up question that might have trailing characters
-            if (question.endsWith('**')) {
-              question = question.slice(0, -2);
-            }
-            faqs.push({ question, answer });
-        }
-    }
-    return faqs;
-};
-
-
 export function FAQ() {
-  const [faqs, setFaqs] = useState<FAQItem[]>(initialFaqs);
-  const [isPending, startTransition] = useTransition();
-  const { toast } = useToast();
-
-  const handleGenerateFaqs = () => {
-    startTransition(async () => {
-      const existingFaqString = faqs
-        .map((f) => `**${f.question}**\n${f.answer}`)
-        .join("\n\n");
-      const result = await getNewFaqs(existingFaqString);
-
-      if (result.success && result.faqs) {
-        const newFaqs = parseFaqs(result.faqs);
-        setFaqs((prev) => [...prev, ...newFaqs]);
-        toast({
-          title: "FAQs Updated",
-          description: "We've added some new questions and answers for you.",
-        });
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Error",
-          description: result.error || "Could not generate new FAQs.",
-        });
-      }
-    });
-  };
-
   return (
     <section className="w-full py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -111,18 +56,6 @@ export function FAQ() {
             </AccordionItem>
           ))}
         </Accordion>
-        <div className="mt-12 text-center">
-          <Button onClick={handleGenerateFaqs} disabled={isPending}>
-            {isPending ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Generating...
-              </>
-            ) : (
-              "Still have questions? Generate more FAQs"
-            )}
-          </Button>
-        </div>
       </div>
     </section>
   );

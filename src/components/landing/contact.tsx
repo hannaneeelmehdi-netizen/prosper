@@ -42,11 +42,15 @@ export function Contact() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // In a real app, you would send this data to your backend.
-    console.log(values);
+    const subject = encodeURIComponent(`Contact Form Submission from ${values.name}`);
+    const body = encodeURIComponent(`Name: ${values.name}\nEmail: ${values.email}\n\nMessage:\n${values.message}`);
+    
+    // In a real app, you would send this to a backend. For this static site, we'll use mailto.
+    window.location.href = `mailto:contact@example.com?subject=${subject}&body=${body}`;
+
     toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out. We'll get back to you soon.",
+      title: "Opening your email client",
+      description: "Please complete and send the email.",
     });
     form.reset();
   }
