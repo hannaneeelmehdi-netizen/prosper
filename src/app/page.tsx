@@ -1,7 +1,9 @@
 import { Header } from "@/components/landing/header";
 import { Hero } from "@/components/landing/hero";
 import { Features } from "@/components/landing/features";
+import { Roadmap } from "@/components/landing/roadmap";
 import { Services } from "@/components/landing/services";
+import { Comparison } from "@/components/landing/comparison";
 import { Testimonials } from "@/components/landing/testimonials";
 import { CTA } from "@/components/landing/cta";
 import { Contact } from "@/components/landing/contact";
@@ -15,7 +17,9 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <Features />
+        <Roadmap />
         <Services />
+        <Comparison />
         <Testimonials />
         <FAQ />
         <CTA />
