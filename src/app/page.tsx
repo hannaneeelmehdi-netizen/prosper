@@ -11,6 +11,7 @@ import { Contact } from "@/components/landing/contact";
 import { FAQ } from "@/components/landing/faq";
 import { Footer } from "@/components/landing/footer";
 import { Pricing } from "@/components/landing/pricing";
+import { TaxSimulator } from "@/components/landing/tax-simulator";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <Features />
+        <TaxSimulator />
         <Roadmap />
         <Services />
         <Comparison />
