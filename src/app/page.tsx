@@ -12,6 +12,7 @@ import { FAQ } from "@/components/landing/faq";
 import { Footer } from "@/components/landing/footer";
 import { Pricing } from "@/components/landing/pricing";
 import { TaxSimulator } from "@/components/landing/tax-simulator";
+import { BackToTopButton } from "@/components/ui/back-to-top-button";
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <BackToTopButton />
     </div>
   );
 }
