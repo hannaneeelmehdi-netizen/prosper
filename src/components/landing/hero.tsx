@@ -14,7 +14,7 @@ export function Hero() {
   return (
     <section 
       ref={ref}
-      className={cn("relative w-full h-[80vh] min-h-[600px] flex items-center justify-center text-white transition-all duration-600 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
+      className={cn("relative w-full h-[60vh] min-h-[500px] flex items-center justify-center text-white transition-all duration-600 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}
     >
       {heroImage && (
         <Image
