@@ -5,6 +5,7 @@ import { Roadmap } from "@/components/landing/roadmap";
 import { Services } from "@/components/landing/services";
 import { Comparison } from "@/components/landing/comparison";
 import { Testimonials } from "@/components/landing/testimonials";
+import { Expertise } from "@/components/landing/expertise";
 import { CTA } from "@/components/landing/cta";
 import { Contact } from "@/components/landing/contact";
 import { FAQ } from "@/components/landing/faq";
@@ -21,6 +22,7 @@ export default function Home() {
         <Services />
         <Comparison />
         <Testimonials />
+        <Expertise />
         <FAQ />
         <CTA />
         <Contact />
