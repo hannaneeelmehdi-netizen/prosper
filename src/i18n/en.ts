@@ -1,6 +1,6 @@
 export const en = {
   meta: {
-    title: 'Apex Corporate Solutions',
+    title: 'Prosper Project',
     description: 'Premium corporate services for modern businesses.',
   },
   header: {
@@ -125,17 +125,17 @@ export const en = {
     subtitle: "Don't just take our word for it. Here's what our clients have to say.",
     cards: [
       {
-        quote: "Apex revolutionized our workflow. Their strategic insights were a complete game-changer for our quarterly growth.",
+        quote: "Prosper Project revolutionized our workflow. Their strategic insights were a complete game-changer for our quarterly growth.",
         author: 'Jian Yang',
         title: 'CEO, Innovate Inc.',
       },
       {
-        quote: "Working with Apex has been an absolute pleasure. Their team is professional, responsive, and truly understands our needs.",
+        quote: "Working with Prosper Project has been an absolute pleasure. Their team is professional, responsive, and truly understands our needs.",
         author: 'Sarah Jones',
         title: 'COO, Future Enterprises',
       },
       {
-        quote: "The operational efficiencies we've gained are remarkable. I cannot recommend Apex Corporate Solutions highly enough.",
+        quote: "The operational efficiencies we've gained are remarkable. I cannot recommend Prosper Project highly enough.",
         author: 'David Chen',
         title: 'Founder, Quantum Dynamics',
       },
@@ -143,8 +143,8 @@ export const en = {
   },
   expertise: {
     title: 'Our Expertise',
-    text: 'Founded by tax and legal experts, Apex simplifies access to Asia for entrepreneurs worldwide.',
-    signature: 'The Apex Team',
+    text: 'Founded by tax and legal experts, Prosper Project simplifies access to Asia for entrepreneurs worldwide.',
+    signature: 'The Prosper Project Team',
   },
   faq: {
     title: 'Frequently Asked Questions',
@@ -167,7 +167,7 @@ export const en = {
   },
   cta: {
     title: 'Ready to Redefine Your Success?',
-    subtitle: 'Partner with Apex and turn your business challenges into growth opportunities. Let\'s build the future, together.',
+    subtitle: 'Partner with Prosper Project and turn your business challenges into growth opportunities. Let\'s build the future, together.',
     button: 'Get in Touch',
   },
   contact: {

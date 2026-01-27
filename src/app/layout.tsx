@@ -6,7 +6,7 @@ import ClientWrapper from './client-wrapper';
 
 
 export const metadata: Metadata = {
-  title: 'Apex Corporate Solutions',
+  title: 'Prosper Project',
   description: 'Services d\'entreprise premium pour les entreprises modernes.',
 };
 

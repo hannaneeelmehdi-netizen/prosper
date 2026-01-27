@@ -1,6 +1,6 @@
 export const fr = {
   meta: {
-    title: 'Apex Corporate Solutions',
+    title: 'Prosper Project',
     description: "Services d'entreprise premium pour les entreprises modernes.",
   },
   header: {
@@ -125,17 +125,17 @@ export const fr = {
     subtitle: "Ne nous croyez pas sur parole. Voici ce que nos clients ont à dire.",
     cards: [
       {
-        quote: "Apex a révolutionné notre flux de travail. Leurs connaissances stratégiques ont complètement changé la donne pour notre croissance trimestrielle.",
+        quote: "Prosper Project a révolutionné notre flux de travail. Leurs connaissances stratégiques ont complètement changé la donne pour notre croissance trimestrielle.",
         author: 'Jian Yang',
         title: 'PDG, Innovate Inc.',
       },
       {
-        quote: "Travailler avec Apex a été un plaisir absolu. Leur équipe est professionnelle, réactive et comprend vraiment nos besoins.",
+        quote: "Travailler avec Prosper Project a été un plaisir absolu. Leur équipe est professionnelle, réactive et comprend vraiment nos besoins.",
         author: 'Sarah Jones',
         title: 'Directrice des opérations, Future Enterprises',
       },
       {
-        quote: "Les gains d'efficacité opérationnelle que nous avons obtenus sont remarquables. Je ne saurais trop recommander Apex Corporate Solutions.",
+        quote: "Les gains d'efficacité opérationnelle que nous avons obtenus sont remarquables. Je ne saurais trop recommander Prosper Project.",
         author: 'David Chen',
         title: 'Fondateur, Quantum Dynamics',
       },
@@ -143,8 +143,8 @@ export const fr = {
   },
   expertise: {
     title: 'Notre Expertise',
-    text: "Fondé par des experts fiscaux et juridiques, Apex simplifie l'accès à l'Asie pour les entrepreneurs francophones.",
-    signature: "L'équipe Apex",
+    text: "Fondé par des experts fiscaux et juridiques, Prosper Project simplifie l'accès à l'Asie pour les entrepreneurs francophones.",
+    signature: "L'équipe Prosper Project",
   },
   faq: {
     title: 'Questions Fréquemment Posées',
@@ -167,7 +167,7 @@ export const fr = {
   },
   cta: {
     title: 'Prêt à redéfinir votre succès ?',
-    subtitle: "Associez-vous à Apex et transformez vos défis commerciaux en opportunités de croissance. Construisons l'avenir, ensemble.",
+    subtitle: "Associez-vous à Prosper Project et transformez vos défis commerciaux en opportunités de croissance. Construisons l'avenir, ensemble.",
     button: 'Prendre contact',
   },
   contact: {
