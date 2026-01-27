@@ -1,9 +1,10 @@
 "use client";
 
-import React, { createContext, useState, useContext, useMemo, useCallback } from 'react';
+import React, { createContext, useState, useContext, useMemo, useCallback, useEffect } from 'react';
 import { translations } from '@/i18n';
 
 type Language = 'fr' | 'en' | 'nl';
+const supportedLanguages: Language[] = ['fr', 'en', 'nl'];
 
 const get = (obj: any, path: string): any => path.split('.').reduce((acc, part) => acc && acc[part], obj);
 
@@ -19,6 +20,13 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
   const [language, setLanguage] = useState<Language>('fr');
+
+  useEffect(() => {
+    const browserLang = navigator.language.split('-')[0] as Language;
+    if (supportedLanguages.includes(browserLang)) {
+      setLanguage(browserLang);
+    }
+  }, []);
   
   const t = useCallback<TranslationFunction>((key, options) => {
     const langTranslations = translations[language];
