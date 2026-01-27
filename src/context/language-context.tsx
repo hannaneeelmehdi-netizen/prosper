@@ -3,7 +3,7 @@
 import React, { createContext, useState, useContext, useMemo, useCallback } from 'react';
 import { translations } from '@/i18n';
 
-type Language = 'fr' | 'en';
+type Language = 'fr' | 'en' | 'nl';
 
 const get = (obj: any, path: string): any => path.split('.').reduce((acc, part) => acc && acc[part], obj);
 
