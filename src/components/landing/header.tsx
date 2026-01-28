@@ -37,7 +37,7 @@ export function Header() {
         <div className="flex items-center">
           <Link href="/">
             <Image
-              src="https://placehold.co/479x108/000000/FFFFFF?text=Prosper+Project&font=inter"
+              src="/logo.png"
               alt="Prosper Project Logo"
               width={479}
               height={108}
