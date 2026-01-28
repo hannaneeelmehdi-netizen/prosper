@@ -9,6 +9,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Check } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const FrFlag = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="15" viewBox="0 0 3 2" className="rounded-sm border border-muted-foreground/20">
@@ -39,6 +41,11 @@ const NlFlag = () => (
 
 export function LanguageSwitcher() {
   const { language, setLanguage } = useTranslation();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const languages: { code: 'fr' | 'en' | 'nl'; name: string; flag: React.ReactNode; }[] = [
     { code: 'fr', name: 'Français', flag: <FrFlag /> },
@@ -47,6 +54,10 @@ export function LanguageSwitcher() {
   ];
 
   const selectedLanguage = languages.find(lang => lang.code === language);
+
+  if (!isMounted) {
+    return <Skeleton className="h-9 w-24" />;
+  }
 
   return (
     <DropdownMenu>
