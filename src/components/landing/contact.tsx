@@ -40,7 +40,7 @@ export function Contact() {
         </div>
         <div className="mx-auto max-w-xl">
           <form 
-            action="https://formsubmit.co/hannaneeelmehdi@email.com" 
+            action="https://formsubmit.co/hannaneeelmehdi@gmail.com" 
             method="POST" 
             className="space-y-6"
           >
