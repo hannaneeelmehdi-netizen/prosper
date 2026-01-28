@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "@/context/language-context";
@@ -34,10 +35,15 @@ export function Header() {
     )}>
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center">
-          {/* REPLACE WITH LOGO.PNG */}
-          <Link className="flex items-baseline space-x-2 text-[#3B82F6]" href="/">
-            <span className="text-xl font-bold">PROSPER</span>
-            <span className="text-xl font-light">PROJECT</span>
+          <Link href="/">
+            <Image
+              src="https://placehold.co/160x40/000000/FFFFFF?text=Prosper+Project&font=inter"
+              alt="Prosper Project Logo"
+              width={160}
+              height={40}
+              className="h-10 w-auto"
+              priority
+            />
           </Link>
         </div>
         
