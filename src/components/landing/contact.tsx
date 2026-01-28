@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, Suspense } from "react";
+import { useSearchParams } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,17 +14,22 @@ import {
 } from "@/components/ui/select";
 import { useInView } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
-import { useTranslation } from "@/context/language-context";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
 
-export function Contact() {
+function ContactForm() {
   const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
-  const { t } = useTranslation();
-  
-  const [businessType, setBusinessType] = useState('');
-  const businessTypeOptions = ['E-commerce', 'Consulting', 'SaaS', 'Other'];
-  const otherOptionValue = 'Other';
-  const isOtherSelected = businessType === otherOptionValue;
+  const searchParams = useSearchParams();
+  const { toast } = useToast();
+
+  useEffect(() => {
+    if (searchParams.get('success') === 'true') {
+      toast({
+        title: "Thank You!",
+        description: "Your assessment has been submitted successfully.",
+      });
+    }
+  }, [searchParams, toast]);
 
   return (
     <section 
@@ -60,24 +66,18 @@ export function Contact() {
             
             <div className="space-y-2">
               <Label htmlFor="business_type">Business Type</Label>
-              <Select name="business_type" onValueChange={setBusinessType} required>
+              <Select name="business_type" required>
                 <SelectTrigger id="business_type">
                   <SelectValue placeholder="Select your business type" />
                 </SelectTrigger>
                 <SelectContent>
-                  {businessTypeOptions.map((option) => (
-                    <SelectItem key={option} value={option}>{option}</SelectItem>
-                  ))}
+                  <SelectItem value="E-commerce">E-commerce</SelectItem>
+                  <SelectItem value="Consulting">Consulting</SelectItem>
+                  <SelectItem value="SaaS">SaaS</SelectItem>
+                  <SelectItem value="Other">Other</SelectItem>
                 </SelectContent>
               </Select>
             </div>
-
-            {isOtherSelected && (
-              <div className="space-y-2">
-                <Label htmlFor="other_business_type">Please specify</Label>
-                <Input id="other_business_type" name="other_business_type" placeholder="e.g. Holding company" required />
-              </div>
-            )}
 
             <div className="space-y-2">
               <Label htmlFor="revenue">Annual Revenue</Label>
@@ -113,4 +113,13 @@ export function Contact() {
       </div>
     </section>
   );
+}
+
+// useSearchParams requires a Suspense boundary.
+export function Contact() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ContactForm />
+    </Suspense>
+  )
 }
