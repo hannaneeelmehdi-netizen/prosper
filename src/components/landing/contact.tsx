@@ -15,6 +15,13 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { useInView } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
@@ -26,6 +33,9 @@ export function Contact() {
   const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
   const { t } = useTranslation();
 
+  const businessTypeOptions = t('contact.form.business_type_options', { returnObjects: true }) as string[];
+  const estimatedRevenueOptions = t('contact.form.estimated_revenue_options', { returnObjects: true }) as string[];
+
   const formSchema = useMemo(() => z.object({
     name: z.string().min(2, {
       message: t('contact.form.name_error'),
@@ -33,6 +43,8 @@ export function Contact() {
     email: z.string().email({
       message: t('contact.form.email_error'),
     }),
+    businessType: z.string().min(1, { message: t('contact.form.business_type_error') }),
+    estimatedRevenue: z.string().min(1, { message: t('contact.form.estimated_revenue_error') }),
     message: z.string().min(10, {
       message: t('contact.form.message_error'),
     }),
@@ -49,7 +61,14 @@ export function Contact() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     const subject = encodeURIComponent(`${t('contact.form.subject_prefix')} ${values.name}`);
-    const body = encodeURIComponent(`Nom: ${values.name}\nEmail: ${values.email}\n\nMessage:\n${values.message}`);
+    const bodyLabels = t('contact.form.body_labels', { returnObjects: true }) as Record<string, string>;
+    const body = encodeURIComponent(
+        `${bodyLabels.name}: ${values.name}\n` +
+        `${bodyLabels.email}: ${values.email}\n` +
+        `${bodyLabels.business_type}: ${values.businessType}\n` +
+        `${bodyLabels.estimated_revenue}: ${values.estimatedRevenue}\n\n` +
+        `${bodyLabels.message}:\n${values.message}`
+    );
     
     window.location.href = `mailto:leaouer@gmail.com?subject=${subject}&body=${body}`;
 
@@ -104,6 +123,50 @@ export function Contact() {
               />
               <FormField
                 control={form.control}
+                name="businessType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('contact.form.business_type')}</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder={t('contact.form.business_type_placeholder')} />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {businessTypeOptions.map((option) => (
+                          <SelectItem key={option} value={option}>{option}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="estimatedRevenue"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('contact.form.estimated_revenue')}</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder={t('contact.form.estimated_revenue_placeholder')} />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {estimatedRevenueOptions.map((option) => (
+                          <SelectItem key={option} value={option}>{option}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
                 name="message"
                 render={({ field }) => (
                   <FormItem>
@@ -119,8 +182,9 @@ export function Contact() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full" size="lg">
+              <Button type="submit" size="lg" className="w-full relative overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105">
                 {t('contact.form.submit_button')}
+                <div className="pointer-events-none absolute inset-0 animate-shimmer bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-[length:200%_100%]" />
               </Button>
             </form>
           </Form>
