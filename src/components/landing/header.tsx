@@ -37,10 +37,10 @@ export function Header() {
         <div className="flex items-center">
           <Link href="/">
             <Image
-              src="https://placehold.co/160x40/000000/FFFFFF?text=Prosper+Project&font=inter"
+              src="https://placehold.co/479x108/000000/FFFFFF?text=Prosper+Project&font=inter"
               alt="Prosper Project Logo"
-              width={160}
-              height={40}
+              width={479}
+              height={108}
               className="h-10 w-auto"
               priority
             />
