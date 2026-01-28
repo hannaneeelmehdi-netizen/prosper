@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Lock } from 'lucide-react';
 import { useTranslation } from '@/context/language-context';
 
@@ -13,9 +14,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 xl:gap-12">
           {/* Column 1: Identity */}
           <div className="space-y-4">
-            <Link className="flex items-baseline space-x-2 text-white" href="/">
-              <span className="text-xl font-bold">PROSPER</span>
-              <span className="text-xl font-light">PROJECT</span>
+            <Link href="/">
+              <Image
+                src="/logo.png"
+                alt="Prosper Project Logo"
+                width={479}
+                height={108}
+                className="h-10 w-auto"
+              />
             </Link>
             <p className="text-sm text-zinc-400">
               {t('footer.tagline')}
