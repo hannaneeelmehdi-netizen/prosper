@@ -36,7 +36,7 @@ export function Pricing() {
             </div>
             
             <div className="my-8 flex justify-center">
-              <Badge className="border-yellow-400/50 bg-yellow-400/10 py-2 px-4 text-sm text-yellow-300 font-semibold text-center">
+              <Badge className="border-primary/50 bg-primary/10 py-2 px-4 text-sm text-primary font-semibold text-center">
                 {t('pricing.guarantee')}
               </Badge>
             </div>

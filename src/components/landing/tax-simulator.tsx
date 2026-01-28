@@ -78,11 +78,11 @@ export function TaxSimulator() {
             
             <div className="text-center pt-6 bg-black/20 rounded-lg p-8 mt-4">
                 <h3 className="text-xl text-muted-foreground mb-4">{t('tax_simulator.savings_label')}</h3>
-                <p className="text-5xl font-bold text-white" style={{ textShadow: '0 0 15px #FBBF24' }}>
+                <p className="text-5xl font-bold text-white" style={{ textShadow: '0 0 15px #C5A059' }}>
                     + {formatCurrency(savings)}
                 </p>
                 {savings > 1500 && (
-                  <p className="mt-4 text-sm text-yellow-400 font-semibold">
+                  <p className="mt-4 text-sm text-primary font-semibold">
                     {t('tax_simulator.roi_text')}
                   </p>
                 )}
