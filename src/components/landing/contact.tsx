@@ -1,18 +1,8 @@
+
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
-
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -22,87 +12,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useToast } from "@/hooks/use-toast";
 import { useInView } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "@/context/language-context";
-import { useMemo } from "react";
+import { Label } from "@/components/ui/label";
 
 export function Contact() {
-  const { toast } = useToast();
   const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
   const { t } = useTranslation();
-
-  const businessTypeOptions = t('contact.form.business_type_options', { returnObjects: true }) as string[];
-  const estimatedRevenueOptions = t('contact.form.estimated_revenue_options', { returnObjects: true }) as string[];
   
-  const otherOptionValue = businessTypeOptions[3] || 'Other';
-
-  const formSchema = useMemo(() => z.object({
-    name: z.string().min(2, {
-      message: t('contact.form.name_error'),
-    }),
-    email: z.string().email({
-      message: t('contact.form.email_error'),
-    }),
-    businessType: z.string().min(1, { message: t('contact.form.business_type_error') }),
-    otherBusinessType: z.string().optional(),
-    estimatedRevenue: z.string().min(1, { message: t('contact.form.estimated_revenue_error') }),
-    message: z.string().min(10, {
-      message: t('contact.form.message_error'),
-    }),
-  }).refine((data) => {
-    if (data.businessType === otherOptionValue) {
-        return data.otherBusinessType && data.otherBusinessType.length >= 3;
-    }
-    return true;
-  }, {
-      message: t('contact.form.other_business_type_error'),
-      path: ['otherBusinessType'],
-  }), [t, otherOptionValue]);
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      businessType: "",
-      otherBusinessType: "",
-      estimatedRevenue: "",
-      message: "",
-    },
-  });
-
-  const businessTypeValue = form.watch("businessType");
-  const isOtherSelected = businessTypeValue === otherOptionValue;
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    const subject = encodeURIComponent(`${t('contact.form.subject_prefix')} ${values.name}`);
-    const bodyLabels = t('contact.form.body_labels', { returnObjects: true }) as Record<string, string>;
-    
-    const bodyParts = [
-        `${bodyLabels.name}: ${values.name}`,
-        `${bodyLabels.email}: ${values.email}`,
-        `${bodyLabels.business_type}: ${values.businessType}`,
-    ];
-
-    if (values.businessType === otherOptionValue && values.otherBusinessType) {
-        bodyParts.push(`${bodyLabels.other_business_type}: ${values.otherBusinessType}`);
-    }
-    
-    bodyParts.push(`${bodyLabels.estimated_revenue}: ${values.estimatedRevenue}`);
-    bodyParts.push(`\n${bodyLabels.message}:\n${values.message}`);
-
-    const body = encodeURIComponent(bodyParts.join('\n'));
-    
-    window.location.href = `mailto:leaouer@gmail.com?subject=${subject}&body=${body}`;
-
-    toast({
-      title: t('contact.form.toast_title'),
-      description: t('contact.form.toast_description'),
-    });
-    form.reset();
-  }
+  const [businessType, setBusinessType] = useState('');
+  const businessTypeOptions = ['E-commerce', 'Consulting', 'SaaS', 'Other'];
+  const otherOptionValue = 'Other';
+  const isOtherSelected = businessType === otherOptionValue;
 
   return (
     <section 
@@ -112,122 +34,82 @@ export function Contact() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="text-4xl font-bold tracking-tight">{t('contact.title')}</h2>
+          <h2 className="text-4xl font-bold tracking-tight">Free Eligibility Assessment</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            {t('contact.subtitle')}
+            See if Hong Kong is the right fit for your business project.
           </p>
         </div>
         <div className="mx-auto max-w-xl">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{t('contact.form.name')}</FormLabel>
-                    <FormControl>
-                      <Input placeholder={t('contact.form.name_placeholder')} {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{t('contact.form.email')}</FormLabel>
-                    <FormControl>
-                      <Input placeholder={t('contact.form.email_placeholder')} {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="businessType"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{t('contact.form.business_type')}</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder={t('contact.form.business_type_placeholder')} />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {businessTypeOptions.map((option) => (
-                          <SelectItem key={option} value={option}>{option}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              {isOtherSelected && (
-                <FormField
-                  control={form.control}
-                  name="otherBusinessType"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>{t('contact.form.other_business_type')}</FormLabel>
-                      <FormControl>
-                        <Input placeholder={t('contact.form.other_business_type_placeholder')} {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              )}
-              <FormField
-                control={form.control}
-                name="estimatedRevenue"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{t('contact.form.estimated_revenue')}</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder={t('contact.form.estimated_revenue_placeholder')} />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {estimatedRevenueOptions.map((option) => (
-                          <SelectItem key={option} value={option}>{option}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
+          <form 
+            action="https://formsubmit.co/hannaneeelmehdi@gmail.com" 
+            method="POST" 
+            className="space-y-6"
+          >
+            {/* FormSubmit Hidden Inputs */}
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://prosper-ten.vercel.app/" />
+
+            <div className="space-y-2">
+              <Label htmlFor="name">Full Name</Label>
+              <Input id="name" name="name" placeholder="Your Name" required />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="email">Business Email</Label>
+              <Input id="email" name="email" type="email" placeholder="your.email@company.com" required />
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="business_type">Business Type</Label>
+              <Select name="business_type" onValueChange={setBusinessType} required>
+                <SelectTrigger id="business_type">
+                  <SelectValue placeholder="Select your business type" />
+                </SelectTrigger>
+                <SelectContent>
+                  {businessTypeOptions.map((option) => (
+                    <SelectItem key={option} value={option}>{option}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            {isOtherSelected && (
+              <div className="space-y-2">
+                <Label htmlFor="other_business_type">Please specify</Label>
+                <Input id="other_business_type" name="other_business_type" placeholder="e.g. Holding company" required />
+              </div>
+            )}
+
+            <div className="space-y-2">
+              <Label htmlFor="revenue">Annual Revenue</Label>
+              <Select name="revenue" required>
+                <SelectTrigger id="revenue">
+                  <SelectValue placeholder="Select your estimated revenue" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="< €100k">&lt; €100k</SelectItem>
+                  <SelectItem value="€100k-€500k">€100k-€500k</SelectItem>
+                  <SelectItem value="> €500k">&gt; €500k</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="message">Message</Label>
+              <Textarea
+                id="message"
                 name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{t('contact.form.message')}</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder={t('contact.form.message_placeholder')}
-                        className="min-h-[120px]"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
+                placeholder="Tell us how we can help"
+                className="min-h-[120px]"
+                required
               />
-              <Button type="submit" size="lg" className="w-full relative overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105">
-                {t('contact.form.submit_button')}
-                <div className="pointer-events-none absolute inset-0 animate-shimmer bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-[length:200%_100%]" />
-              </Button>
-            </form>
-          </Form>
+            </div>
+
+            <Button type="submit" size="lg" className="w-full relative overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105">
+              Submit My Assessment
+              <div className="pointer-events-none absolute inset-0 animate-shimmer bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-[length:200%_100%]" />
+            </Button>
+          </form>
         </div>
       </div>
     </section>
