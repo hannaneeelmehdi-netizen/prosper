@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "@/context/language-context";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
+import { Button } from "@/components/ui/button";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -59,6 +60,16 @@ export function Header() {
             ))}
           </nav>
           <LanguageSwitcher />
+          <Button
+            asChild
+            size="sm"
+            className="relative overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105 hidden md:inline-flex"
+          >
+            <Link href="#contact">
+                {t('pricing.cta_button')}
+                <div className="pointer-events-none absolute inset-0 animate-shimmer bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-[length:200%_100%]" />
+            </Link>
+          </Button>
         </div>
       </div>
     </header>

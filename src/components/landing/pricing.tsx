@@ -50,8 +50,15 @@ export function Pricing() {
               ))}
             </ul>
 
-            <Button asChild size="lg" className="w-full mt-10">
-              <Link href="#contact">{t('pricing.cta_button')}</Link>
+            <Button
+              asChild
+              size="lg"
+              className="w-full mt-10 relative overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105"
+            >
+              <Link href="#contact">
+                {t('pricing.cta_button')}
+                <div className="pointer-events-none absolute inset-0 animate-shimmer bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-[length:200%_100%]" />
+              </Link>
             </Button>
             <p className="mt-4 text-center text-sm text-muted-foreground">
               {t('pricing.processing_time')}
