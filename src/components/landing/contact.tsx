@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -47,7 +46,7 @@ export function Contact() {
           >
             {/* FormSubmit Hidden Inputs */}
             <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="https://prosper-ten.vercel.app/" />
+            <input type="hidden" name="_next" value="/?success=true" />
 
             <div className="space-y-2">
               <Label htmlFor="name">Full Name</Label>
