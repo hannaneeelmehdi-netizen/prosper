@@ -35,6 +35,8 @@ export function Contact() {
 
   const businessTypeOptions = t('contact.form.business_type_options', { returnObjects: true }) as string[];
   const estimatedRevenueOptions = t('contact.form.estimated_revenue_options', { returnObjects: true }) as string[];
+  
+  const otherOptionValue = businessTypeOptions[3] || 'Other';
 
   const formSchema = useMemo(() => z.object({
     name: z.string().min(2, {
@@ -44,31 +46,54 @@ export function Contact() {
       message: t('contact.form.email_error'),
     }),
     businessType: z.string().min(1, { message: t('contact.form.business_type_error') }),
+    otherBusinessType: z.string().optional(),
     estimatedRevenue: z.string().min(1, { message: t('contact.form.estimated_revenue_error') }),
     message: z.string().min(10, {
       message: t('contact.form.message_error'),
     }),
-  }), [t]);
+  }).refine((data) => {
+    if (data.businessType === otherOptionValue) {
+        return data.otherBusinessType && data.otherBusinessType.length >= 3;
+    }
+    return true;
+  }, {
+      message: t('contact.form.other_business_type_error'),
+      path: ['otherBusinessType'],
+  }), [t, otherOptionValue]);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       email: "",
+      businessType: "",
+      otherBusinessType: "",
+      estimatedRevenue: "",
       message: "",
     },
   });
 
+  const businessTypeValue = form.watch("businessType");
+  const isOtherSelected = businessTypeValue === otherOptionValue;
+
   function onSubmit(values: z.infer<typeof formSchema>) {
     const subject = encodeURIComponent(`${t('contact.form.subject_prefix')} ${values.name}`);
     const bodyLabels = t('contact.form.body_labels', { returnObjects: true }) as Record<string, string>;
-    const body = encodeURIComponent(
-        `${bodyLabels.name}: ${values.name}\n` +
-        `${bodyLabels.email}: ${values.email}\n` +
-        `${bodyLabels.business_type}: ${values.businessType}\n` +
-        `${bodyLabels.estimated_revenue}: ${values.estimatedRevenue}\n\n` +
-        `${bodyLabels.message}:\n${values.message}`
-    );
+    
+    const bodyParts = [
+        `${bodyLabels.name}: ${values.name}`,
+        `${bodyLabels.email}: ${values.email}`,
+        `${bodyLabels.business_type}: ${values.businessType}`,
+    ];
+
+    if (values.businessType === otherOptionValue && values.otherBusinessType) {
+        bodyParts.push(`${bodyLabels.other_business_type}: ${values.otherBusinessType}`);
+    }
+    
+    bodyParts.push(`${bodyLabels.estimated_revenue}: ${values.estimatedRevenue}`);
+    bodyParts.push(`\n${bodyLabels.message}:\n${values.message}`);
+
+    const body = encodeURIComponent(bodyParts.join('\n'));
     
     window.location.href = `mailto:leaouer@gmail.com?subject=${subject}&body=${body}`;
 
@@ -143,6 +168,21 @@ export function Contact() {
                   </FormItem>
                 )}
               />
+              {isOtherSelected && (
+                <FormField
+                  control={form.control}
+                  name="otherBusinessType"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t('contact.form.other_business_type')}</FormLabel>
+                      <FormControl>
+                        <Input placeholder={t('contact.form.other_business_type_placeholder')} {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )}
               <FormField
                 control={form.control}
                 name="estimatedRevenue"
