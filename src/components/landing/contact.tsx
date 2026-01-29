@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -14,7 +14,6 @@ import {
 import { useInView } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
-import { Loader2 } from "lucide-react";
 
 export function Contact() {
   const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
@@ -24,11 +23,6 @@ export function Contact() {
   const [businessType, setBusinessType] = useState('');
   const [revenue, setRevenue] = useState('');
   const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = (event: FormEvent) => {
-    setLoading(true);
-  };
 
   return (
     <section 
@@ -47,26 +41,28 @@ export function Contact() {
           <form 
             action="https://formsubmit.co/hannaneeelmehdi@gmail.com"
             method="POST"
-            onSubmit={handleSubmit}
             className="space-y-6"
           >
+            {/* FormSubmit hidden inputs */}
             <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="/?success=true" />
+            <input type="hidden" name="_next" value="https://prosper-ten.vercel.app/?success=true" />
             <input type="hidden" name="_subject" value="New Eligibility Assessment - Prospect Prosper" />
             
+            {/* Hidden inputs for all form fields to ensure data is sent */}
+            <input type="hidden" name="name" value={name} />
+            <input type="hidden" name="email" value={email} />
             <input type="hidden" name="business_type" value={businessType} />
             <input type="hidden" name="revenue" value={revenue} />
+            <input type="hidden" name="message" value={message} />
 
             <div className="space-y-2">
               <Label htmlFor="name">Full Name</Label>
               <Input 
                 id="name" 
-                name="full_name"
                 placeholder="Your Name" 
                 required 
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                disabled={loading}
               />
             </div>
 
@@ -74,13 +70,11 @@ export function Contact() {
               <Label htmlFor="email">Business Email</Label>
               <Input 
                 id="email" 
-                name="email" 
                 type="email" 
                 placeholder="your.email@company.com" 
                 required 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                disabled={loading}
               />
             </div>
             
@@ -90,7 +84,6 @@ export function Contact() {
                 required 
                 onValueChange={setBusinessType}
                 value={businessType}
-                disabled={loading}
               >
                 <SelectTrigger id="business_type">
                   <SelectValue placeholder="Select your business type" />
@@ -110,7 +103,6 @@ export function Contact() {
                 required
                 onValueChange={setRevenue}
                 value={revenue}
-                disabled={loading}
               >
                 <SelectTrigger id="revenue">
                   <SelectValue placeholder="Select your estimated revenue" />
@@ -127,25 +119,16 @@ export function Contact() {
               <Label htmlFor="message">Message</Label>
               <Textarea
                 id="message"
-                name="message"
                 placeholder="Tell us how we can help"
                 className="min-h-[120px]"
                 required
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                disabled={loading}
               />
             </div>
 
-            <Button type="submit" size="lg" className="w-full relative overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105" disabled={loading}>
-              {loading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Sending...
-                </>
-              ) : (
-                'Submit My Assessment'
-              )}
+            <Button type="submit" size="lg" className="w-full relative overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105">
+              Submit My Assessment
               <div className="pointer-events-none absolute inset-0 animate-shimmer bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-[length:200%_100%]" />
             </Button>
           </form>
