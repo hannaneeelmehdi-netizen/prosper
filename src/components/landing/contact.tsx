@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -23,6 +24,7 @@ export function Contact() {
   const [businessType, setBusinessType] = useState('');
   const [revenue, setRevenue] = useState('');
   const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   return (
     <section 
@@ -41,11 +43,12 @@ export function Contact() {
           <form 
             action="https://formsubmit.co/hannaneeelmehdi@gmail.com"
             method="POST"
+            onSubmit={() => setIsSubmitting(true)}
             className="space-y-6"
           >
             {/* FormSubmit hidden inputs */}
             <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="https://prosper-ten.vercel.app/?success=true" />
+            <input type="hidden" name="_next" value="/?success=true" />
             <input type="hidden" name="_subject" value="New Eligibility Assessment - Prospect Prosper" />
             
             {/* Hidden inputs for all form fields to ensure data is sent */}
@@ -58,7 +61,8 @@ export function Contact() {
             <div className="space-y-2">
               <Label htmlFor="name">Full Name</Label>
               <Input 
-                id="name" 
+                id="name"
+                name="full_name"
                 placeholder="Your Name" 
                 required 
                 value={name}
@@ -70,6 +74,7 @@ export function Contact() {
               <Label htmlFor="email">Business Email</Label>
               <Input 
                 id="email" 
+                name="email"
                 type="email" 
                 placeholder="your.email@company.com" 
                 required 
@@ -119,6 +124,7 @@ export function Contact() {
               <Label htmlFor="message">Message</Label>
               <Textarea
                 id="message"
+                name="message"
                 placeholder="Tell us how we can help"
                 className="min-h-[120px]"
                 required
@@ -127,8 +133,13 @@ export function Contact() {
               />
             </div>
 
-            <Button type="submit" size="lg" className="w-full relative overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105">
-              Submit My Assessment
+            <Button 
+              type="submit" 
+              size="lg" 
+              className="w-full relative overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Sending...' : 'Submit My Assessment'}
               <div className="pointer-events-none absolute inset-0 animate-shimmer bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-[length:200%_100%]" />
             </Button>
           </form>
