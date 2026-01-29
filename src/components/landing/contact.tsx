@@ -62,7 +62,6 @@ export function Contact() {
               <Label htmlFor="name">Full Name</Label>
               <Input 
                 id="name"
-                name="name"
                 placeholder="Your Name" 
                 required 
                 value={name}
@@ -74,7 +73,6 @@ export function Contact() {
               <Label htmlFor="email">Business Email</Label>
               <Input 
                 id="email" 
-                name="email"
                 type="email" 
                 placeholder="your.email@company.com" 
                 required 
@@ -124,7 +122,6 @@ export function Contact() {
               <Label htmlFor="message">Message</Label>
               <Textarea
                 id="message"
-                name="message"
                 placeholder="Tell us how we can help"
                 className="min-h-[120px]"
                 required
