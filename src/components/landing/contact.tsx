@@ -15,21 +15,36 @@ import { useInView } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { useFirestore } from "@/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { errorEmitter } from "@/firebase/error-emitter";
+import { FirestorePermissionError } from "@/firebase/errors";
+import { Loader2 } from "lucide-react";
 
 export function Contact() {
   const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
   const { toast } = useToast();
+  const firestore = useFirestore();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [businessType, setBusinessType] = useState('');
   const [revenue, setRevenue] = useState('');
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
 
-    // Simple validation to ensure fields are not empty
+    if (!firestore) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Database not available. Please try again later.",
+      });
+      return;
+    }
+
     if (!name || !email || !businessType || !revenue || !message) {
       toast({
         variant: "destructive",
@@ -38,25 +53,43 @@ export function Contact() {
       });
       return;
     }
-
-    const subject = encodeURIComponent(`Eligibility Assessment for ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\n` +
-      `Email: ${email}\n` +
-      `Business Type: ${businessType}\n` +
-      `Annual Revenue: ${revenue}\n\n` +
-      `Message:\n${message}`
-    );
-
-    const mailtoLink = `mailto:hannaneeelmehdi@gmail.com?subject=${subject}&body=${body}`;
-
-    toast({
-      title: "Opening your email client",
-      description: "Please complete and send the email to finalize your assessment.",
-    });
     
-    // This will open the user's default email client
-    window.location.href = mailtoLink;
+    setLoading(true);
+
+    const contactData = {
+      name,
+      email,
+      businessType,
+      revenue,
+      message,
+      createdAt: serverTimestamp(),
+    };
+
+    const contactsCollection = collection(firestore, 'contacts');
+
+    addDoc(contactsCollection, contactData)
+      .then(() => {
+        toast({
+          title: "Assessment Submitted",
+          description: "Thank you! We'll be in touch soon.",
+        });
+        setName('');
+        setEmail('');
+        setBusinessType('');
+        setRevenue('');
+        setMessage('');
+      })
+      .catch((serverError) => {
+        const permissionError = new FirestorePermissionError({
+          path: contactsCollection.path,
+          operation: 'create',
+          requestResourceData: contactData,
+        });
+        errorEmitter.emit('permission-error', permissionError);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -86,6 +119,7 @@ export function Contact() {
                 required 
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                disabled={loading}
               />
             </div>
 
@@ -99,6 +133,7 @@ export function Contact() {
                 required 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                disabled={loading}
               />
             </div>
             
@@ -109,6 +144,7 @@ export function Contact() {
                 required 
                 onValueChange={setBusinessType}
                 value={businessType}
+                disabled={loading}
               >
                 <SelectTrigger id="business_type">
                   <SelectValue placeholder="Select your business type" />
@@ -129,6 +165,7 @@ export function Contact() {
                 required
                 onValueChange={setRevenue}
                 value={revenue}
+                disabled={loading}
               >
                 <SelectTrigger id="revenue">
                   <SelectValue placeholder="Select your estimated revenue" />
@@ -151,10 +188,12 @@ export function Contact() {
                 required
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                disabled={loading}
               />
             </div>
 
-            <Button type="submit" size="lg" className="w-full relative overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105">
+            <Button type="submit" size="lg" className="w-full relative overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105" disabled={loading}>
+              {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               Submit My Assessment
               <div className="pointer-events-none absolute inset-0 animate-shimmer bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-[length:200%_100%]" />
             </Button>

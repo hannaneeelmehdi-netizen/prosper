@@ -3,6 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { LanguageProvider } from '@/context/language-context';
 import ClientWrapper from './client-wrapper';
+import { FirebaseClientProvider } from '@/firebase/client-provider';
 
 
 export const metadata: Metadata = {
@@ -23,12 +24,14 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
-        <LanguageProvider>
-          <ClientWrapper>
-            {children}
-            <Toaster />
-          </ClientWrapper>
-        </LanguageProvider>
+        <FirebaseClientProvider>
+          <LanguageProvider>
+            <ClientWrapper>
+              {children}
+              <Toaster />
+            </ClientWrapper>
+          </LanguageProvider>
+        </FirebaseClientProvider>
       </body>
     </html>
   );
