@@ -52,7 +52,7 @@ export function Contact() {
             <input type="hidden" name="_subject" value="New Eligibility Assessment - Prospect Prosper" />
             
             {/* Hidden inputs for all form fields to ensure data is sent */}
-            <input type="hidden" name="name" value={name} />
+            <input type="hidden" name="full_name" value={name} />
             <input type="hidden" name="email" value={email} />
             <input type="hidden" name="business_type" value={businessType} />
             <input type="hidden" name="revenue" value={revenue} />
@@ -62,7 +62,6 @@ export function Contact() {
               <Label htmlFor="name">Full Name</Label>
               <Input 
                 id="name"
-                name="full_name"
                 placeholder="Your Name" 
                 required 
                 value={name}
@@ -74,7 +73,6 @@ export function Contact() {
               <Label htmlFor="email">Business Email</Label>
               <Input 
                 id="email" 
-                name="email"
                 type="email" 
                 placeholder="your.email@company.com" 
                 required 
@@ -124,7 +122,6 @@ export function Contact() {
               <Label htmlFor="message">Message</Label>
               <Textarea
                 id="message"
-                name="message"
                 placeholder="Tell us how we can help"
                 className="min-h-[120px]"
                 required
