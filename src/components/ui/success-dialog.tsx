@@ -39,9 +39,9 @@ export function SuccessDialog() {
               <CheckCircle2 className="h-8 w-8 text-black" />
             </div>
           </div>
-          <DialogTitle className="text-center text-2xl font-bold">Submission Successful!</DialogTitle>
+          <DialogTitle className="text-center text-2xl font-bold">Assessment Successfully Submitted!</DialogTitle>
           <DialogDescription className="text-center text-muted-foreground pt-2">
-            Thank you for your submission. We will get back to you shortly.
+            Thank you for your interest in Prospect Prosper. Our tax and legal experts are now reviewing your business project. We will contact you at the email provided within 24 hours.
           </DialogDescription>
         </DialogHeader>
         <div className="flex justify-center mt-4">
