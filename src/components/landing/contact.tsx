@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, Suspense } from "react";
-import { useSearchParams } from 'next/navigation';
+import { useState, FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -17,19 +16,48 @@ import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 
-function ContactForm() {
+export function Contact() {
   const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
-  const searchParams = useSearchParams();
   const { toast } = useToast();
 
-  useEffect(() => {
-    if (searchParams.get('success') === 'true') {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [businessType, setBusinessType] = useState('');
+  const [revenue, setRevenue] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+
+    // Simple validation to ensure fields are not empty
+    if (!name || !email || !businessType || !revenue || !message) {
       toast({
-        title: "Thank You!",
-        description: "Your assessment has been submitted successfully.",
+        variant: "destructive",
+        title: "Incomplete Form",
+        description: "Please fill out all required fields before submitting.",
       });
+      return;
     }
-  }, [searchParams, toast]);
+
+    const subject = encodeURIComponent(`Eligibility Assessment for ${name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\n` +
+      `Email: ${email}\n` +
+      `Business Type: ${businessType}\n` +
+      `Annual Revenue: ${revenue}\n\n` +
+      `Message:\n${message}`
+    );
+
+    const mailtoLink = `mailto:hannaneeelmehdi@gmail.com?subject=${subject}&body=${body}`;
+
+    toast({
+      title: "Opening your email client",
+      description: "Please complete and send the email to finalize your assessment.",
+    });
+    
+    // This will open the user's default email client
+    window.location.href = mailtoLink;
+  };
 
   return (
     <section 
@@ -46,27 +74,42 @@ function ContactForm() {
         </div>
         <div className="mx-auto max-w-xl">
           <form 
-            action="https://formsubmit.co/hannaneeelmehdi@gmail.com" 
-            method="POST" 
+            onSubmit={handleSubmit}
             className="space-y-6"
           >
-            {/* FormSubmit Hidden Inputs */}
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="/?success=true" />
-
             <div className="space-y-2">
               <Label htmlFor="name">Full Name</Label>
-              <Input id="name" name="name" placeholder="Your Name" required />
+              <Input 
+                id="name" 
+                name="name" 
+                placeholder="Your Name" 
+                required 
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="email">Business Email</Label>
-              <Input id="email" name="email" type="email" placeholder="your.email@company.com" required />
+              <Input 
+                id="email" 
+                name="email" 
+                type="email" 
+                placeholder="your.email@company.com" 
+                required 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             
             <div className="space-y-2">
               <Label htmlFor="business_type">Business Type</Label>
-              <Select name="business_type" required>
+              <Select 
+                name="business_type" 
+                required 
+                onValueChange={setBusinessType}
+                value={businessType}
+              >
                 <SelectTrigger id="business_type">
                   <SelectValue placeholder="Select your business type" />
                 </SelectTrigger>
@@ -81,7 +124,12 @@ function ContactForm() {
 
             <div className="space-y-2">
               <Label htmlFor="revenue">Annual Revenue</Label>
-              <Select name="revenue" required>
+              <Select 
+                name="revenue" 
+                required
+                onValueChange={setRevenue}
+                value={revenue}
+              >
                 <SelectTrigger id="revenue">
                   <SelectValue placeholder="Select your estimated revenue" />
                 </SelectTrigger>
@@ -101,6 +149,8 @@ function ContactForm() {
                 placeholder="Tell us how we can help"
                 className="min-h-[120px]"
                 required
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
               />
             </div>
 
@@ -113,13 +163,4 @@ function ContactForm() {
       </div>
     </section>
   );
-}
-
-// useSearchParams requires a Suspense boundary.
-export function Contact() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <ContactForm />
-    </Suspense>
-  )
 }
