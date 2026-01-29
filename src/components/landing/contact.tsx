@@ -14,17 +14,10 @@ import {
 import { useInView } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/use-toast";
-import { useFirestore } from "@/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { errorEmitter } from "@/firebase/error-emitter";
-import { FirestorePermissionError } from "@/firebase/errors";
 import { Loader2 } from "lucide-react";
 
 export function Contact() {
   const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
-  const { toast } = useToast();
-  const firestore = useFirestore();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -34,62 +27,7 @@ export function Contact() {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
-
-    if (!firestore) {
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Database not available. Please try again later.",
-      });
-      return;
-    }
-
-    if (!name || !email || !businessType || !revenue || !message) {
-      toast({
-        variant: "destructive",
-        title: "Incomplete Form",
-        description: "Please fill out all required fields before submitting.",
-      });
-      return;
-    }
-    
     setLoading(true);
-
-    const contactData = {
-      name,
-      email,
-      businessType,
-      revenue,
-      message,
-      createdAt: serverTimestamp(),
-    };
-
-    const contactsCollection = collection(firestore, 'contacts');
-
-    addDoc(contactsCollection, contactData)
-      .then(() => {
-        toast({
-          title: "Assessment Submitted",
-          description: "Thank you! We'll be in touch soon.",
-        });
-        setName('');
-        setEmail('');
-        setBusinessType('');
-        setRevenue('');
-        setMessage('');
-      })
-      .catch((serverError) => {
-        const permissionError = new FirestorePermissionError({
-          path: contactsCollection.path,
-          operation: 'create',
-          requestResourceData: contactData,
-        });
-        errorEmitter.emit('permission-error', permissionError);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
   };
 
   return (
@@ -107,14 +45,20 @@ export function Contact() {
         </div>
         <div className="mx-auto max-w-xl">
           <form 
+            action="https://formsubmit.co/hannaneeelmehdi@gmail.com"
+            method="POST"
             onSubmit={handleSubmit}
             className="space-y-6"
           >
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="/?success=true" />
+            <input type="hidden" name="_subject" value="New Eligibility Assessment - Prospect Prosper" />
+
             <div className="space-y-2">
               <Label htmlFor="name">Full Name</Label>
               <Input 
                 id="name" 
-                name="name" 
+                name="full_name"
                 placeholder="Your Name" 
                 required 
                 value={name}
@@ -193,8 +137,14 @@ export function Contact() {
             </div>
 
             <Button type="submit" size="lg" className="w-full relative overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105" disabled={loading}>
-              {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Submit My Assessment
+              {loading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                'Submit My Assessment'
+              )}
               <div className="pointer-events-none absolute inset-0 animate-shimmer bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-[length:200%_100%]" />
             </Button>
           </form>

@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { LanguageProvider } from '@/context/language-context';
 import ClientWrapper from './client-wrapper';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
+import { SuccessDialog } from '@/components/ui/success-dialog';
 
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export default function RootLayout({
             <ClientWrapper>
               {children}
               <Toaster />
+              <SuccessDialog />
             </ClientWrapper>
           </LanguageProvider>
         </FirebaseClientProvider>
