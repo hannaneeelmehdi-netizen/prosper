@@ -53,6 +53,9 @@ export function Contact() {
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_next" value="/?success=true" />
             <input type="hidden" name="_subject" value="New Eligibility Assessment - Prospect Prosper" />
+            
+            <input type="hidden" name="business_type" value={businessType} />
+            <input type="hidden" name="revenue" value={revenue} />
 
             <div className="space-y-2">
               <Label htmlFor="name">Full Name</Label>
@@ -84,7 +87,6 @@ export function Contact() {
             <div className="space-y-2">
               <Label htmlFor="business_type">Business Type</Label>
               <Select 
-                name="business_type" 
                 required 
                 onValueChange={setBusinessType}
                 value={businessType}
@@ -105,7 +107,6 @@ export function Contact() {
             <div className="space-y-2">
               <Label htmlFor="revenue">Annual Revenue</Label>
               <Select 
-                name="revenue" 
                 required
                 onValueChange={setRevenue}
                 value={revenue}
