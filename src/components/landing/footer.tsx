@@ -3,7 +3,6 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Lock } from 'lucide-react';
 import { useTranslation } from '@/context/language-context';
 
 export function Footer() {
@@ -11,7 +10,7 @@ export function Footer() {
 
   return (
     <footer className="bg-[#050505] border-t border-white/10">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 xl:gap-12">
           {/* Column 1: Identity */}
           <div className="space-y-4">
@@ -27,10 +26,6 @@ export function Footer() {
             <p className="text-sm text-zinc-400">
               {t('footer.tagline')}
             </p>
-            <div className="pt-4 text-xs text-zinc-500 space-y-1">
-              <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
-              <p>Hong Kong CR No. 3192345</p>
-            </div>
           </div>
 
           {/* Column 2: Navigation */}
@@ -66,12 +61,10 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Security Bar */}
-        <div className="mt-16 border-t border-white/10 pt-8 sm:flex sm:items-center sm:justify-start">
-          <div className="flex items-center space-x-2">
-            <Lock className="h-4 w-4 text-zinc-500" />
-            <p className="text-xs text-zinc-500">{t('footer.security_text')}</p>
-          </div>
+        {/* Copyright */}
+        <div className="mt-12 border-t border-white/10 pt-8 text-center text-xs text-zinc-500">
+          <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
+          <p className="mt-1">Hong Kong CR No. 3192345</p>
         </div>
       </div>
     </footer>
