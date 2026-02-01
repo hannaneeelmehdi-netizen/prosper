@@ -8,7 +8,7 @@ export default function LegalPage() {
     registrationNumber: "[Numéro d’entreprise (BCE / KBO)]",
     vatNumber: "[Numéro de TVA (si applicable)]",
     address: "[Adresse officielle de l’entreprise]",
-    email: "prosperproject@outlook.fr",
+    email: "hannaneeelmehdi@gmail.com",
     host: "Firebase App Hosting (Google)",
   };
 

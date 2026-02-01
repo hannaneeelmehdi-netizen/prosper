@@ -41,13 +41,12 @@ export function Contact() {
         </div>
         <div className="mx-auto max-w-xl">
           <form 
-            action="https://formsubmit.co/prosperproject@outlook.fr"
+            action="https://formsubmit.co/hannaneeelmehdi@gmail.com"
             method="POST"
             onSubmit={() => setIsSubmitting(true)}
             className="space-y-6"
           >
             {/* FormSubmit hidden inputs */}
-            <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_next" value="/?success=true" />
             <input type="hidden" name="_subject" value="New Eligibility Assessment - Prospect Prosper" />
             

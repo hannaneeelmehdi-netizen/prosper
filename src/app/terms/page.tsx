@@ -6,7 +6,7 @@ export default function TermsPage() {
   const legalInfo = {
     companyName: "PROSPECT PROJECT (Nom à confirmer)",
     address: "[Adresse officielle de l’entreprise]",
-    email: "prosperproject@outlook.fr",
+    email: "hannaneeelmehdi@gmail.com",
   };
 
   return (

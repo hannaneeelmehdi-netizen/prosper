@@ -5,7 +5,7 @@ import { BackToTopButton } from "@/components/ui/back-to-top-button";
 export default function PrivacyPage() {
   const legalInfo = {
     companyName: "PROSPECT PROJECT (Nom à confirmer)",
-    email: "prosperproject@outlook.fr",
+    email: "hannaneeelmehdi@gmail.com",
   };
 
   return (
