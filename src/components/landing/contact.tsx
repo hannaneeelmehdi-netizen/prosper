@@ -41,7 +41,7 @@ export function Contact() {
         </div>
         <div className="mx-auto max-w-xl">
           <form 
-            action="https://formsubmit.co/hannaneeelmehdi@gmail.com"
+            action="https://formsubmit.co/prosperproject@outlook.fr"
             method="POST"
             onSubmit={() => setIsSubmitting(true)}
             className="space-y-6"
