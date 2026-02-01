@@ -1,3 +1,4 @@
+
 "use client";
 
 import {
@@ -48,7 +49,7 @@ export function FAQ() {
 
         <div className="mt-8 text-center">
           <Link
-            href="https://wa.me/32494390528" 
+            href="https://wa.me/33621665040" 
             target="_blank"
             rel="noopener noreferrer"
             className="text-green-500 hover:text-green-600 transition-colors"
