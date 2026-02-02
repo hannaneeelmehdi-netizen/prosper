@@ -50,6 +50,7 @@ export function Header() {
               width={479}
               height={108}
               className="h-10 w-auto"
+              priority
             />
           </Link>
         </div>
@@ -110,6 +111,7 @@ export function Header() {
                         width={479}
                         height={108}
                         className="h-8 w-auto"
+                        priority
                       />
                     </Link>
                   </SheetClose>
