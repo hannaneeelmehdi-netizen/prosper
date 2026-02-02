@@ -7,12 +7,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { useInView } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
+import { useTranslation } from "@/context/language-context";
 
 export function Contact() {
   const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
+  const { t } = useTranslation();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,9 +31,9 @@ export function Contact() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="text-4xl font-bold tracking-tight">Contact Us</h2>
+          <h2 className="text-4xl font-bold tracking-tight">{t('contact.title', { ns: 'fr' })}</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            Have a question? We'd love to hear from you.
+            {t('contact.subtitle', { ns: 'fr' })}
           </p>
         </div>
         <div className="mx-auto max-w-xl">
@@ -40,11 +42,11 @@ export function Contact() {
             className="space-y-6"
           >
             <div className="space-y-2">
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name">{t('contact.form.name', { ns: 'fr' })}</Label>
               <Input 
                 id="name"
                 name="name"
-                placeholder="Your Name" 
+                placeholder={t('contact.form.name_placeholder', { ns: 'fr' })}
                 required 
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -65,11 +67,11 @@ export function Contact() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="message">Message</Label>
+              <Label htmlFor="message">{t('contact.form.message', { ns: 'fr' })}</Label>
               <Textarea
                 id="message"
                 name="message"
-                placeholder="Your message"
+                placeholder={t('contact.form.message_placeholder', { ns: 'fr' })}
                 className="min-h-[120px]"
                 required
                 value={message}
@@ -82,7 +84,7 @@ export function Contact() {
               size="lg" 
               className="w-full relative overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105"
             >
-              Send Message
+              {t('contact.form.submit_button', { ns: 'fr' })}
               <div className="pointer-events-none absolute inset-0 animate-shimmer bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-[length:200%_100%]" />
             </Button>
           </form>
