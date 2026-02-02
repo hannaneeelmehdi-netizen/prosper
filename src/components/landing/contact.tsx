@@ -31,9 +31,9 @@ export function Contact() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="text-4xl font-bold tracking-tight">{t('contact.title', { ns: 'fr' })}</h2>
+          <h2 className="text-4xl font-bold tracking-tight">{t('contact.title')}</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            {t('contact.subtitle', { ns: 'fr' })}
+            {t('contact.subtitle')}
           </p>
         </div>
         <div className="mx-auto max-w-xl">
@@ -42,11 +42,11 @@ export function Contact() {
             className="space-y-6"
           >
             <div className="space-y-2">
-              <Label htmlFor="name">{t('contact.form.name', { ns: 'fr' })}</Label>
+              <Label htmlFor="name">{t('contact.form.name')}</Label>
               <Input 
                 id="name"
                 name="name"
-                placeholder={t('contact.form.name_placeholder', { ns: 'fr' })}
+                placeholder={t('contact.form.name_placeholder')}
                 required 
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -67,11 +67,11 @@ export function Contact() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="message">{t('contact.form.message', { ns: 'fr' })}</Label>
+              <Label htmlFor="message">{t('contact.form.message')}</Label>
               <Textarea
                 id="message"
                 name="message"
-                placeholder={t('contact.form.message_placeholder', { ns: 'fr' })}
+                placeholder={t('contact.form.message_placeholder')}
                 className="min-h-[120px]"
                 required
                 value={message}
@@ -84,7 +84,7 @@ export function Contact() {
               size="lg" 
               className="w-full relative overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105"
             >
-              {t('contact.form.submit_button', { ns: 'fr' })}
+              {t('contact.form.submit_button')}
               <div className="pointer-events-none absolute inset-0 animate-shimmer bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-[length:200%_100%]" />
             </Button>
           </form>
