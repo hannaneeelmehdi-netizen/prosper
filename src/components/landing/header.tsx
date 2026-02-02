@@ -88,7 +88,7 @@ export function Header() {
             className="relative h-8 px-2 text-xs overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105"
           >
             <Link href="#contact">
-              {t('pricing.cta_button')}
+              {t('header.cta_mobile')}
               <div className="pointer-events-none absolute inset-0 animate-shimmer bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-[length:200%_100%]" />
             </Link>
           </Button>

@@ -10,6 +10,7 @@ export const en = {
       pricing: 'Pricing',
       comparison: 'Comparison',
     },
+    cta_mobile: 'Eligibility',
   },
   hero: {
     title: 'Hong Kong: The Tax Architecture for Global Entrepreneurs',

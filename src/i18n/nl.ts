@@ -10,6 +10,7 @@ export const nl = {
       pricing: 'Prijzen',
       comparison: 'Vergelijking',
     },
+    cta_mobile: 'Check',
   },
   hero: {
     title: 'Hong Kong: De Fiscale Architectuur voor Wereldwijde Ondernemers',

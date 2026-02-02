@@ -10,6 +10,7 @@ export const fr = {
       pricing: 'Tarifs',
       comparison: 'Comparatif',
     },
+    cta_mobile: 'Éligibilité',
   },
   hero: {
     title: "Hong Kong : L'Architecture Fiscale des Entrepreneurs Globaux",
