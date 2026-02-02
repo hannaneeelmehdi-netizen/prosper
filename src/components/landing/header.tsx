@@ -83,6 +83,16 @@ export function Header() {
         {/* Mobile Navigation */}
         <div className="flex items-center gap-2 md:hidden">
           <LanguageSwitcher />
+          <Button
+            asChild
+            size="sm"
+            className="relative overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105"
+          >
+            <Link href="#contact">
+              {t('pricing.cta_button')}
+              <div className="pointer-events-none absolute inset-0 animate-shimmer bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-[length:200%_100%]" />
+            </Link>
+          </Button>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -117,16 +127,6 @@ export function Header() {
                     </SheetClose>
                   ))}
                 </nav>
-                <div className="mt-auto p-4 border-t border-white/10">
-                  <SheetClose asChild>
-                    <Button asChild size="lg" className="w-full relative overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105">
-                      <Link href="#contact">
-                        {t('pricing.cta_button')}
-                        <div className="pointer-events-none absolute inset-0 animate-shimmer bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-[length:200%_100%]" />
-                      </Link>
-                    </Button>
-                  </SheetClose>
-                </div>
               </div>
             </SheetContent>
           </Sheet>
