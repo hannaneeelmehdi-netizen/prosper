@@ -10,7 +10,7 @@ export default function CookiesPage() {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="space-y-4 mb-12">
             <h1 className="text-4xl font-bold tracking-tight text-center">Politique de Cookies</h1>
-            <p className="text-center text-muted-foreground">Dernière mise à jour : {new Date().toLocaleDateString('fr-CA')}</p>
+            <p className="text-center text-muted-foreground">Dernière mise à jour : 2024-07-26</p>
           </div>
           <div className="prose-styles mx-auto">
             <h2>Qu'est-ce qu'un cookie ?</h2>

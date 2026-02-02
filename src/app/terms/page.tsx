@@ -16,7 +16,7 @@ export default function TermsPage() {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="space-y-4 mb-12">
             <h1 className="text-4xl font-bold tracking-tight text-center">Conditions Générales de Vente (CGV)</h1>
-            <p className="text-center text-muted-foreground">Dernière mise à jour : {new Date().toLocaleDateString('fr-CA')}</p>
+            <p className="text-center text-muted-foreground">Dernière mise à jour : 2024-07-26</p>
           </div>
           <div className="prose-styles mx-auto">
             <h2>Article 1 : Objet</h2>
