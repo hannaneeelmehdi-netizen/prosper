@@ -1,30 +1,25 @@
-
 "use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { useInView } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
 
 export function Contact() {
   const [ref, inView] = useInView({ rootMargin: "-100px 0px", once: true });
-
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [businessType, setBusinessType] = useState('');
-  const [revenue, setRevenue] = useState('');
+  const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const subject = `Contact Form: ${name}`;
+    const body = `You have a new message from your website contact form.\n\nHere are the details:\n\nName: ${name}\nPhone: ${phone}\n\nMessage:\n${message}`;
+    window.location.href = `mailto:prosperproject@outlook.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
 
   return (
     <section 
@@ -34,86 +29,39 @@ export function Contact() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="text-4xl font-bold tracking-tight">Free Eligibility Assessment</h2>
+          <h2 className="text-4xl font-bold tracking-tight">Contact Us</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            See if Hong Kong is the right fit for your business project.
+            Have a question? We'd love to hear from you.
           </p>
         </div>
         <div className="mx-auto max-w-xl">
           <form 
-            action="https://formsubmit.co/hannaneeelmehdi@gmail.com"
-            method="POST"
-            onSubmit={() => setIsSubmitting(true)}
+            onSubmit={handleSubmit}
             className="space-y-6"
           >
-            {/* FormSubmit hidden inputs */}
-            <input type="hidden" name="_next" value="/?success=true" />
-            <input type="hidden" name="_subject" value="New Eligibility Assessment - Prospect Prosper" />
-            
-            {/* Hidden inputs for custom Select components */}
-            <input type="hidden" name="business_type" value={businessType} />
-            <input type="hidden" name="revenue" value={revenue} />
-
             <div className="space-y-2">
-              <Label htmlFor="name">Full Name</Label>
+              <Label htmlFor="name">Name</Label>
               <Input 
                 id="name"
-                name="full_name"
+                name="name"
                 placeholder="Your Name" 
                 required 
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="email">Business Email</Label>
-              <Input 
-                id="email" 
-                name="email"
-                type="email" 
-                placeholder="your.email@company.com" 
-                required 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
             
             <div className="space-y-2">
-              <Label htmlFor="business_type">Business Type</Label>
-              <Select 
-                required 
-                onValueChange={setBusinessType}
-                value={businessType}
-              >
-                <SelectTrigger id="business_type">
-                  <SelectValue placeholder="Select your business type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="E-commerce">E-commerce</SelectItem>
-                  <SelectItem value="Consulting">Consulting</SelectItem>
-                  <SelectItem value="SaaS">SaaS</SelectItem>
-                  <SelectItem value="Other">Other</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="revenue">Annual Revenue</Label>
-              <Select 
+              <Label htmlFor="phone">Phone</Label>
+              <Input 
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="Your phone number" 
                 required
-                onValueChange={setRevenue}
-                value={revenue}
-              >
-                <SelectTrigger id="revenue">
-                  <SelectValue placeholder="Select your estimated revenue" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="< €100k">&lt; €100k</SelectItem>
-                  <SelectItem value="€100k-€500k">€100k-€500k</SelectItem>
-                  <SelectItem value="> €500k">&gt; €500k</SelectItem>
-                </SelectContent>
-              </Select>
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
             </div>
 
             <div className="space-y-2">
@@ -121,7 +69,7 @@ export function Contact() {
               <Textarea
                 id="message"
                 name="message"
-                placeholder="Tell us how we can help"
+                placeholder="Your message"
                 className="min-h-[120px]"
                 required
                 value={message}
@@ -133,9 +81,8 @@ export function Contact() {
               type="submit" 
               size="lg" 
               className="w-full relative overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105"
-              disabled={isSubmitting}
             >
-              {isSubmitting ? 'Sending...' : 'Submit My Assessment'}
+              Send Message
               <div className="pointer-events-none absolute inset-0 animate-shimmer bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-[length:200%_100%]" />
             </Button>
           </form>
