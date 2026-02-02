@@ -86,7 +86,8 @@ export function Header() {
           <LanguageSwitcher />
           <Button
             asChild
-            className="relative h-8 px-2 text-xs overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105"
+            size="sm"
+            className="relative h-9 px-3 text-xs overflow-hidden bg-gradient-to-r from-[#C5A059] to-[#A68446] text-black font-bold transition-transform duration-300 hover:scale-105"
           >
             <Link href="#contact">
               {t('header.cta_mobile')}
