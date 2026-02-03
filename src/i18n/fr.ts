@@ -184,7 +184,7 @@ export const fr = {
       business_type: "Type d'entreprise",
       business_type_placeholder: "Sélectionnez votre type d'entreprise",
       business_type_error: "Veuillez sélectionner un type d'entreprise.",
-      business_type_options: ['E-commerce', 'Consulting', 'Services Numériques', 'Autre'],
+      business_type_options: ['Consultants', 'Agences Digitales', 'Entreprises SaaS', 'E-commerce', 'Autre'],
       other_business_type: 'Veuillez préciser',
       other_business_type_placeholder: 'ex: Société holding',
       other_business_type_error: "Veuillez préciser votre type d'entreprise (min 3 car.).",

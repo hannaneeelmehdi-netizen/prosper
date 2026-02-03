@@ -184,7 +184,7 @@ export const en = {
       business_type: 'Business Type',
       business_type_placeholder: 'Select your business type',
       business_type_error: 'Please select a business type.',
-      business_type_options: ['E-commerce', 'Consulting', 'Digital Services', 'Other'],
+      business_type_options: ['Consultants', 'Digital Agencies', 'SaaS Businesses', 'E-commerce', 'Other'],
       other_business_type: 'Please specify',
       other_business_type_placeholder: 'e.g. Holding company',
       other_business_type_error: 'Please specify your business type (min 3 chars).',

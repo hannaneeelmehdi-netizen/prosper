@@ -184,7 +184,7 @@ export const nl = {
       business_type: 'Bedrijfstype',
       business_type_placeholder: 'Selecteer uw bedrijfstype',
       business_type_error: 'Selecteer een bedrijfstype.',
-      business_type_options: ['E-commerce', 'Consulting', 'Digitale Diensten', 'Overig'],
+      business_type_options: ['Consultants', 'Digitale Agentschappen', 'SaaS-bedrijven', 'E-commerce', 'Overig'],
       other_business_type: 'Gelieve te specificeren',
       other_business_type_placeholder: 'bijv. Holdingmaatschappij',
       other_business_type_error: 'Gelieve uw bedrijfstype te specificeren (min 3 karakters).',

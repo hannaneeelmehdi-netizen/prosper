@@ -28,7 +28,7 @@ export function Contact() {
   
   const businessTypeOptions = t('contact.form.business_type_options', { returnObjects: true }) as string[];
   const revenueOptions = t('contact.form.estimated_revenue_options', { returnObjects: true }) as string[];
-  const otherBusinessTypeOption = businessTypeOptions[3];
+  const otherBusinessTypeOption = businessTypeOptions[4];
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
