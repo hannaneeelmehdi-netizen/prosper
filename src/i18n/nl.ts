@@ -35,8 +35,8 @@ export const nl = {
       },
       {
         category: 'Efficiëntie',
-        title: '48u Fast-Track',
-        description: 'Uw bedrijf wordt online geregistreerd in minder dan 48 uur. Een 100% digitaal proces voor een snelle start van uw activiteiten.',
+        title: 'Snel Proces',
+        description: 'Snel oprichtingsproces: uw bedrijf in Hong Kong wordt doorgaans binnen 5-7 werkdagen geregistreerd.',
       },
       {
         category: 'Bescherming',
@@ -69,7 +69,7 @@ export const nl = {
       },
       {
         title: 'Ontvangst Officiële Documenten (CI & BR)',
-        duration: '48u',
+        duration: '5-7 werkdagen',
         description: 'Ontvang uw officiële bedrijfsdocumenten elektronisch. In Hong Kong zijn de officiële oprichtingsdocumenten het Certificate of Incorporation (CI) en het Business Registration Certificate (BR), die het equivalent zijn van de Franse K-bis.',
       },
       {
@@ -120,7 +120,7 @@ export const nl = {
       '24/7 Engelse Ondersteuning',
     ],
     cta_button: 'Controleer Mijn Geschiktheid',
-    processing_time: 'Huidige verwerkingstijd: 48 uur.',
+    processing_time: 'Bedrijfsoprichting voltooid binnen 5 tot 7 werkdagen.',
   },
   testimonials: {
     title: 'Vertrouwd door Industrieleiders',

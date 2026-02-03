@@ -35,8 +35,8 @@ export const fr = {
       },
       {
         category: 'Efficacité',
-        title: 'Rapidité 48h',
-        description: "Votre société est enregistrée en ligne en moins de 48 heures. Un processus 100% digitalisé pour un lancement rapide de vos activités.",
+        title: 'Processus Rapide',
+        description: "Processus d'incorporation rapide : votre société à Hong Kong est généralement enregistrée en 5 à 7 jours ouvrés.",
       },
       {
         category: 'Protection',
@@ -69,8 +69,8 @@ export const fr = {
       },
       {
         title: 'Réception des Documents Officiels (CI & BR)',
-        duration: '48h',
-        description: "Recevez vos documents officiels par voie électronique. À Hong Kong, il s'agit du Certificate of Incorporation (CI) et du Business Registration Certificate (BR), qui sont les équivalents du K-bis français.",
+        duration: '5-7 jours',
+        description: "Recevez vos documents officiels par voie électronique. À Hong Kong, les documents officiels d'incorporation sont le Certificate of Incorporation (CI) et le Business Registration Certificate (BR), qui sont les équivalents du K-bis français.",
       },
       {
         title: 'Ouverture Bancaire',
@@ -120,7 +120,7 @@ export const fr = {
       'Support Français 24/7',
     ],
     cta_button: 'Vérifier mon éligibilité',
-    processing_time: 'Délai actuel de traitement : 48 heures.',
+    processing_time: "La constitution de la société est finalisée en 5 à 7 jours ouvrés.",
   },
   testimonials: {
     title: "Approuvé par les leaders de l'industrie",

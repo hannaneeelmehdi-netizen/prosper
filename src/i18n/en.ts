@@ -35,8 +35,8 @@ export const en = {
       },
       {
         category: 'Efficiency',
-        title: '48h Fast-Track',
-        description: 'Your company is registered online in less than 48 hours. A 100% digital process for a quick launch of your activities.',
+        title: 'Fast-Track Process',
+        description: 'Fast incorporation process: your Hong Kong company is typically registered within 5–7 working days.',
       },
       {
         category: 'Protection',
@@ -69,7 +69,7 @@ export const en = {
       },
       {
         title: 'Receive Official Documents (CI & BR)',
-        duration: '48h',
+        duration: '5-7 working days',
         description: 'Receive your official company documents electronically. In Hong Kong, the official incorporation documents are the Certificate of Incorporation (CI) and the Business Registration Certificate (BR), which are the equivalent of the French K-bis.',
       },
       {
@@ -120,7 +120,7 @@ export const en = {
       '24/7 English Support',
     ],
     cta_button: 'Check My Eligibility',
-    processing_time: 'Current processing time: 48 hours.',
+    processing_time: 'Company incorporation completed within 5 to 7 working days.',
   },
   testimonials: {
     title: 'Trusted by Industry Leaders',
