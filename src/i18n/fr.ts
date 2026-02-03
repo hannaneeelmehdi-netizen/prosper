@@ -1,8 +1,9 @@
 
 export const fr = {
   meta: {
-    title: 'Prosper Project',
-    description: "Services d'entreprise premium pour les entreprises modernes.",
+    title: "Société Hong Kong 0% Impôt | Prosper Project | Création d'Entreprise",
+    description: "Créez votre société à Hong Kong avec Prosper Project et profitez de 0% d'impôt sur les bénéfices internationaux. Idéal pour e-commerçants, consultants et freelances. Incorporation rapide et 100% à distance.",
+    keywords: "société hong kong, 0% impôt, création d'entreprise, optimisation fiscale, société offshore, e-commerce, consultant, freelance hong kong, banque internationale",
   },
   header: {
     nav: {

@@ -1,8 +1,9 @@
 
 export const en = {
   meta: {
-    title: 'Prosper Project',
-    description: 'Premium corporate services for modern businesses.',
+    title: '0% Tax Hong Kong Company | Prosper Project | Incorporate Your Business',
+    description: 'Set up your Hong Kong company with Prosper Project for 0% tax on international profits. Ideal for e-commerce, consultants, and digital nomads. Fast, 100% remote incorporation and banking.',
+    keywords: 'Hong Kong company, 0% tax, company formation, business incorporation, tax optimization, offshore company, e-commerce business, consulting business, freelance Hong Kong, international banking',
   },
   header: {
     nav: {

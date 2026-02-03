@@ -1,8 +1,9 @@
 
 export const nl = {
   meta: {
-    title: 'Prosper Project',
-    description: 'Premium zakelijke diensten voor moderne bedrijven.',
+    title: '0% Belasting Hong Kong Bedrijf | Prosper Project | Bedrijfsoprichting',
+    description: 'Richt uw bedrijf in Hong Kong op met Prosper Project voor 0% belasting op internationale winsten. Ideaal voor e-commerce, consultants en digitale nomaden. Snelle, 100% externe oprichting en bankieren.',
+    keywords: 'hong kong bedrijf, 0% belasting, bedrijfsoprichting, belastingoptimalisatie, offshore bedrijf, e-commerce bedrijf, adviesbureau, freelance hong kong, internationaal bankieren',
   },
   header: {
     nav: {
