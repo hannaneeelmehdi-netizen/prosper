@@ -53,7 +53,6 @@ export function Footer() {
           <div>
             <h3 className="text-sm font-semibold tracking-widest uppercase text-white">{t('footer.contact_header')}</h3>
             <div className="mt-4 space-y-2 text-sm text-zinc-400">
-              <p>Tower 535, 535 Jaffe Road,<br/>Causeway Bay, Hong Kong</p>
               <p><a href="mailto:prosperproject@outlook.fr" className="hover:text-white transition-colors">prosperproject@outlook.fr</a></p>
               <p>{t('footer.contact_support')}</p>
             </div>

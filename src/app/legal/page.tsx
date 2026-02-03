@@ -8,7 +8,6 @@ export default function LegalPage() {
     companyName: "PROSPECT PROJECT (Nom à confirmer)",
     registrationNumber: "[Numéro d’entreprise (BCE / KBO)]",
     vatNumber: "[Numéro de TVA (si applicable)]",
-    address: "[Adresse officielle de l’entreprise]",
     email: "prosperproject@outlook.fr",
     host: "Firebase App Hosting (Google)",
   };
@@ -28,7 +27,6 @@ export default function LegalPage() {
               <strong>Nom de l'entreprise :</strong> {legalInfo.companyName}<br />
               <strong>Numéro d’entreprise :</strong> {legalInfo.registrationNumber}<br />
               <strong>Numéro de TVA :</strong> {legalInfo.vatNumber}<br />
-              <strong>Adresse :</strong> {legalInfo.address}<br />
               <strong>Email :</strong> <a href={`mailto:${legalInfo.email}`} className="text-primary hover:underline">{legalInfo.email}</a>
             </p>
 
