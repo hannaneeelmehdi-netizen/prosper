@@ -164,7 +164,6 @@ export const en = {
         a: 'The renewal includes the Company Secretary, Registered Office, and annual return filing. Expect around €900/year all-inclusive.',
       },
     ],
-    whatsapp_link: 'Another question? Talk to us on WhatsApp',
   },
   cta: {
     title: 'Ready to Redefine Your Success?',

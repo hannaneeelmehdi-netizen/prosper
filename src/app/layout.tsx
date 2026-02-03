@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { LanguageProvider } from '@/context/language-context';
 import ClientWrapper from './client-wrapper';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
+import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export default function RootLayout({
             <ClientWrapper>
               {children}
               <Toaster />
+              <WhatsAppButton />
             </ClientWrapper>
           </LanguageProvider>
         </FirebaseClientProvider>

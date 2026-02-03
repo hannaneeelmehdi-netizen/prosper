@@ -164,7 +164,6 @@ export const fr = {
         a: 'Le renouvellement inclut le Company Secretary, le Siège Social et la déclaration annuelle. Comptez environ 900€/an tout inclus.',
       },
     ],
-    whatsapp_link: 'Une autre question ? Parlez-nous sur WhatsApp',
   },
   cta: {
     title: 'Prêt à redéfinir votre succès ?',

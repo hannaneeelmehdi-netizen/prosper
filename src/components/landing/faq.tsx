@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/accordion";
 import { useInView } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 import { useTranslation } from "@/context/language-context";
 
 export function FAQ() {
@@ -46,18 +45,6 @@ export function FAQ() {
             </AccordionItem>
           ))}
         </Accordion>
-
-        <div className="mt-8 text-center">
-          <Link
-            href="https://wa.me/33621665040" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-green-500 hover:text-green-600 transition-colors"
-          >
-            {t('faq.whatsapp_link')}
-          </Link>
-        </div>
-
       </div>
     </section>
   );

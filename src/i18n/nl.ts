@@ -164,7 +164,6 @@ export const nl = {
         a: 'De verlenging omvat de Company Secretary, het Geregistreerd Kantoor en de jaarlijkse aangifte. Reken op ongeveer €900/jaar all-inclusive.',
       },
     ],
-    whatsapp_link: 'Een andere vraag? Praat met ons op WhatsApp',
   },
   cta: {
     title: 'Klaar om Uw Succes te Herdefiniëren?',
