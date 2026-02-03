@@ -1,3 +1,4 @@
+
 export const en = {
   meta: {
     title: 'Prosper Project',
@@ -67,9 +68,9 @@ export const en = {
         description: "Our expert team verifies your application's compliance within 24 hours.",
       },
       {
-        title: 'Receive Business Documents',
+        title: 'Receive Official Documents (CI & BR)',
         duration: '48h',
-        description: 'Receive all your official company documents electronically.',
+        description: 'Receive your official company documents electronically. In Hong Kong, the official incorporation documents are the Certificate of Incorporation (CI) and the Business Registration Certificate (BR), which are the equivalent of the French K-bis.',
       },
       {
         title: 'Assisted Bank Opening',

@@ -1,3 +1,4 @@
+
 export const nl = {
   meta: {
     title: 'Prosper Project',
@@ -67,9 +68,9 @@ export const nl = {
         description: 'Ons deskundige team verifieert de conformiteit van uw aanvraag binnen 24 uur.',
       },
       {
-        title: 'Ontvang Bedrijfsdocumenten',
+        title: 'Ontvangst Officiële Documenten (CI & BR)',
         duration: '48u',
-        description: 'Ontvang al uw officiële bedrijfsdocumenten elektronisch.',
+        description: 'Ontvang uw officiële bedrijfsdocumenten elektronisch. In Hong Kong zijn de officiële oprichtingsdocumenten het Certificate of Incorporation (CI) en het Business Registration Certificate (BR), die het equivalent zijn van de Franse K-bis.',
       },
       {
         title: 'Begeleide Bankopening',
@@ -98,7 +99,7 @@ export const nl = {
   },
   comparison: {
     title: 'Een Duidelijke Strategische Beslissing',
-    subtitle: 'Vergelijk en begrijp waarom Hong Kong de voorkeurskeuze is voor moderne ondernemers.',
+    subtitle: 'Vergelijk en begrijp waarom Hong Kong de voorkeurskeuze is for moderne ondernemers.',
     feature_col: 'Kenmerk',
     hk_col: 'Hong Kong',
     other_col: 'Frankrijk / LLC (VS)',

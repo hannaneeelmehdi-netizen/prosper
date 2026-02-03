@@ -1,3 +1,4 @@
+
 export const fr = {
   meta: {
     title: 'Prosper Project',
@@ -67,9 +68,9 @@ export const fr = {
         description: "Notre équipe d'experts vérifie la conformité de votre dossier sous 24 heures.",
       },
       {
-        title: 'Réception K-Bis & Documents',
+        title: 'Réception des Documents Officiels (CI & BR)',
         duration: '48h',
-        description: "Recevez tous vos documents d'entreprise officiels par voie électronique.",
+        description: "Recevez vos documents officiels par voie électronique. À Hong Kong, il s'agit du Certificate of Incorporation (CI) et du Business Registration Certificate (BR), qui sont les équivalents du K-bis français.",
       },
       {
         title: 'Ouverture Bancaire',
