@@ -18,6 +18,11 @@ import {
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const { t } = useTranslation();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -94,44 +99,46 @@ export function Header() {
               <div className="pointer-events-none absolute inset-0 animate-shimmer bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-[length:200%_100%]" />
             </Link>
           </Button>
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Open menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-full max-w-xs bg-black/90 backdrop-blur-md border-l-white/10 p-0">
-              <div className="flex h-full flex-col">
-                <div className="p-4 border-b border-white/10">
-                  <SheetClose asChild>
-                    <Link href="/">
-                      <Image
-                        src="/logo.png"
-                        alt="Prosper Project Logo"
-                        width={479}
-                        height={108}
-                        className="h-8 w-auto"
-                        priority
-                      />
-                    </Link>
-                  </SheetClose>
-                </div>
-                <nav className="flex flex-col gap-4 p-4 mt-4">
-                  {navLinks.map((link) => (
-                    <SheetClose asChild key={link.href}>
-                      <Link
-                        href={link.href}
-                        className="text-lg font-medium text-muted-foreground transition-colors hover:text-foreground"
-                      >
-                        {link.label}
+          {isClient && (
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Open menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-full max-w-xs bg-black/90 backdrop-blur-md border-l-white/10 p-0">
+                <div className="flex h-full flex-col">
+                  <div className="p-4 border-b border-white/10">
+                    <SheetClose asChild>
+                      <Link href="/">
+                        <Image
+                          src="/logo.png"
+                          alt="Prosper Project Logo"
+                          width={479}
+                          height={108}
+                          className="h-8 w-auto"
+                          priority
+                        />
                       </Link>
                     </SheetClose>
-                  ))}
-                </nav>
-              </div>
-            </SheetContent>
-          </Sheet>
+                  </div>
+                  <nav className="flex flex-col gap-4 p-4 mt-4">
+                    {navLinks.map((link) => (
+                      <SheetClose asChild key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="text-lg font-medium text-muted-foreground transition-colors hover:text-foreground"
+                        >
+                          {link.label}
+                        </Link>
+                      </SheetClose>
+                    ))}
+                  </nav>
+                </div>
+              </SheetContent>
+            </Sheet>
+          )}
         </div>
       </div>
     </header>
