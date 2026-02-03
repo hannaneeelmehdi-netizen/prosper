@@ -210,7 +210,7 @@ export const fr = {
     },
   },
   footer: {
-    tagline: 'Accompagnement premium pour entrepreneurs francophones en Asie.',
+    tagline: 'Soutien de confiance pour la croissance de votre entreprise en Asie.',
     copyright: '© 2026 Prosper Project Limited. Tous droits réservés.',
     designed_by: 'Conçu par',
     nav_header: 'Navigation',
@@ -227,7 +227,7 @@ export const fr = {
       cookies: 'Politique de Cookies (GDPR)',
       disclaimer: 'Avis de non-responsabilité (Disclaimer)',
     },
-    contact_header: 'Siège Social',
+    contact_header: 'Contact',
     contact_support: 'WhatsApp Support 24/7',
     security_text: 'Paiement sécurisé SSL 256-bit. Données cryptées.',
   },

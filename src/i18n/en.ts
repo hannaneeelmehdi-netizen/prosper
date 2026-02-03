@@ -210,7 +210,7 @@ export const en = {
     },
   },
   footer: {
-    tagline: 'Premium support for entrepreneurs in Asia.',
+    tagline: 'Trusted support for your business growth in Asia.',
     copyright: '© 2026 Prosper Project Limited. All rights reserved.',
     designed_by: 'Designed by',
     nav_header: 'Navigation',
@@ -227,7 +227,7 @@ export const en = {
       cookies: 'Cookie Policy (GDPR)',
       disclaimer: 'Disclaimer',
     },
-    contact_header: 'Head Office',
+    contact_header: 'Contact',
     contact_support: 'WhatsApp Support 24/7',
     security_text: 'Secure SSL 256-bit payment. Encrypted data.',
   },

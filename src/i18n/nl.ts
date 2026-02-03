@@ -210,7 +210,7 @@ export const nl = {
     },
   },
   footer: {
-    tagline: 'Premium ondersteuning voor ondernemers in Azië.',
+    tagline: 'Betrouwbare ondersteuning voor de groei van uw bedrijf in Azië.',
     copyright: '© 2026 Prosper Project Limited. Alle rechten voorbehouden.',
     designed_by: 'Ontworpen door',
     nav_header: 'Navigatie',
@@ -227,7 +227,7 @@ export const nl = {
       cookies: 'Cookiebeleid (GDPR)',
       disclaimer: 'Disclaimer',
     },
-    contact_header: 'Hoofdkantoor',
+    contact_header: 'Contact',
     contact_support: 'WhatsApp Ondersteuning 24/7',
     security_text: 'Beveiligde SSL 256-bit betaling. Versleutelde gegevens.',
   },
