@@ -6,8 +6,8 @@ import Link from 'next/link';
 const WhatsAppIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="32"
-    height="32"
+    width="28"
+    height="28"
     viewBox="0 0 24 24"
     fill="currentColor"
     className="text-white"
@@ -23,7 +23,7 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        'fixed bottom-8 left-8 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] shadow-lg transition-transform duration-300 hover:scale-110'
+        'fixed bottom-8 left-8 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] shadow-lg transition-transform duration-300 hover:scale-110'
       )}
       aria-label="Contact us on WhatsApp"
     >
