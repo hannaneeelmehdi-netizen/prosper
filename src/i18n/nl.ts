@@ -211,7 +211,8 @@ export const nl = {
   },
   footer: {
     tagline: 'Premium ondersteuning voor ondernemers in Azië.',
-    copyright: '© {year} Prosper Project Limited. Alle rechten voorbehouden.',
+    copyright: '© 2026 Prosper Project Limited. Alle rechten voorbehouden.',
+    designed_by: 'Ontworpen door',
     nav_header: 'Navigatie',
     nav_links: {
       process: 'Ons Proces',

@@ -211,7 +211,8 @@ export const en = {
   },
   footer: {
     tagline: 'Premium support for entrepreneurs in Asia.',
-    copyright: '© {year} Prosper Project Limited. All rights reserved.',
+    copyright: '© 2026 Prosper Project Limited. All rights reserved.',
+    designed_by: 'Designed by',
     nav_header: 'Navigation',
     nav_links: {
       process: 'Our Process',

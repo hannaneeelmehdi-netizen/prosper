@@ -62,8 +62,11 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="mt-12 border-t border-white/10 pt-8 text-center text-xs text-zinc-500">
-          <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
+          <p>{t('footer.copyright')}</p>
           <p className="mt-1">Hong Kong CR No. 3192345</p>
+          <p className="mt-2 opacity-50">
+            {t('footer.designed_by')} <a href="https://www.darkavel.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition-opacity">DARKAVEL</a>
+          </p>
         </div>
       </div>
     </footer>

@@ -211,7 +211,8 @@ export const fr = {
   },
   footer: {
     tagline: 'Accompagnement premium pour entrepreneurs francophones en Asie.',
-    copyright: '© {year} Prosper Project Limited. Tous droits réservés.',
+    copyright: '© 2026 Prosper Project Limited. Tous droits réservés.',
+    designed_by: 'Conçu par',
     nav_header: 'Navigation',
     nav_links: {
       process: 'Notre Processus',
